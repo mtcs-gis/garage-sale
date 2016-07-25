@@ -1,0 +1,28 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Something something GIS local stats something something",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtcs-gis/theProject.git"
+  },
+  "keywords": [
+    "GIS"
+  ],
+  "author": "Kyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtcs-gis/theProject/issues"
+  },
+  "homepage": "https://github.com/mtcs-gis/theProject#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.7"
+  }
+}
