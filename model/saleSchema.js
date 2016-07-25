@@ -38,4 +38,4 @@ var saleSchema = new mongoose.Schema({
 
 });
 
-module.exports = trailLogSchema;
+module.exports = saleSchema;
