@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var SaleSchema = require('./SaleSchema.js');
+var SaleSchema = require('./saleSchema.js');
 
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
 
@@ -13,8 +13,8 @@ var UserSchema = new mongoose.Schema({
 	role: {type: String, required: false, default: 'User'},
 	loggedin: {type: Boolean},
 	salePost: [SaleSchema]
-	
-}); 
+
+});
 
 UserSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null); //encrypts password and does so 8 times. Default is 10. More encryptions means more time to process

@@ -7,35 +7,35 @@ var mongoose = require('mongoose');
 
 var saleSchema = new mongoose.Schema({
 	SaleName: {
-		type: String,  
-		validate: /[a-z]/, 
-		require: true 
+		type: String,
+		validate: /[a-z]/,
+		require: true
 		},
 	startDate: {
-		type: Date, 
-		require: true  
+		type: Date,
+		require: true
 		},
 	endDate:{
-		type: Date, 
-		require: true 
+		type: Date,
+		require: true
 		},
 	startTime:{
-		type: String, 
+		type: String,
 		require: true
 		},
 	endTime:{
-		type: String, 
+		type: String,
 		require: true
 		},
 	saleLoc: {
 		type: Number,
-		require: true 
+		require: true
 		},
 	saleComments: {
-		type: String 
-		} 
+		type: String
+		}
 
 
 });
 
-module.exports = trailLogSchema;
+module.exports = saleSchema

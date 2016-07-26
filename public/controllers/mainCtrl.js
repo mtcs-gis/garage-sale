@@ -1,19 +1,19 @@
-angular.module("garageApp").controller("mainCtrl", function($scope,$window){
+angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
+  $scope.sales;
 
-  $scope.askQuestion = function(){
-    var answer = prompt("Is this Garage Sale at your current location?");
-    answer = answer.toUpperCase();
-    if(answer === "YES"){
-      $window.navigator.geolocation.getCurrentPosition(function(position){
-      var lat = position.coords.latitude;
-      var long = position.coords.longitude;
-      $scope.$apply(function(){
-        $scope.lat = lat;
-        $scope.long = long;
-      });
-  })
-    } else {
-      return console.log("SOmething Else");
-    }
+  $scope.getSales = function(){
+    mainServ.getSales()
+    .then(function(res){
+      $scope.sales = res;
+    })
+  }
+
+  $scope.postSale = function(sale){
+  //  angular.copy
+    mainServ.postSale(sale);
+  }
+
+  $scope.updateSale = function(sale){
+    mainServ.updateSale(sale);
   }
 });
