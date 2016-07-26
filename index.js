@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+'/public'));
 
 var userControl = require('./controller/userControl.js');
-
+var saleControl = require('./controller/saleControl.js')
 
 
 
@@ -37,7 +37,9 @@ app.get('/user', userControl.getOneUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
 
-
+// app.get('/sales', saleControl.read );
+// app.get('/sales:id',saleControl.readById);
+// app.put('/sales:id',saleControl.update);
 
 
 
