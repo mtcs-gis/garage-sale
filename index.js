@@ -1,5 +1,5 @@
 var express = require('express');
-var cors = require('cors');
+// var cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
@@ -14,7 +14,7 @@ require('./passport/passport.js')(passport);
 
 var app = express();
 
-app.use(cors);
+// app.use(cors);
 app.use(session(configSession));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,7 +45,7 @@ app.delete('/user/:id', userControl.delete);
 
 mongoose.connect(
   "mongodb://localhost:27017/sales"
-)
+);
 
 mongoose.connection.once('open', function(){
   console.log('We have data');
