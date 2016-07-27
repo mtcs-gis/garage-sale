@@ -1,5 +1,9 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
+
+  $scope.map;
+  $scope.address;
   $scope.sales;
+
 
   $scope.getSales = function(){
     mainServ.getSales()
@@ -15,5 +19,9 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
   $scope.updateSale = function(sale){
     mainServ.updateSale(sale);
-  }
+  };
+
+
+
+
 });
