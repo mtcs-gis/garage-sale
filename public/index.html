@@ -3,14 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body ng-controller="mainCtrl">
+  <div class='sidebar pad2' ng-show=true>
+    <button class="btn-success" type="button" ng-click="askQuestion();focused=true">Create</button>
+    <h1>Listings</h1>
+    <ul>
+      <li>Lat = {{lat}}</li>
+      <li>Long = {{long}}</li>
+    </ul>
+  </div>
+    <div class="create-new" ng-show="focused">
+    <form>
+      <input type="text" name="name" placeholder="Location" ng-model="lat">
+      <input type="text" name="name" placeholder="Information" ng-model="long">
+    </form>
+    </div>
 
+  <div class="container-fluid">
+      <div id='map-one' class='map'></div>
+  </div>
+
+
+
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
 <script src="./js/app.js" charset="utf-8"></script>
 <script src="./controllers/mainCtrl.js" charset="utf-8"></script>
 <script src="./service/mainServ.js" charset="utf-8"></script>
+<script src="./js/mapBox.js" charset="utf-8"></script>
 </body>
 </html>

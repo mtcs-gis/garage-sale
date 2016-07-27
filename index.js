@@ -15,6 +15,7 @@ require('./passport/passport.js')(passport);
 var app = express();
 
 //app.use(cors);
+
 app.use(session(configSession));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -36,6 +37,8 @@ app.get('/users', userControl.getAllUsers);
 app.get('/user', userControl.getOneUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
+app.post('/sale/:id', userControl.addSale);
+app.put('/sale/:id', userControl.updateSale);
 
 // app.get('/sales', saleControl.read );
 // app.get('/sales:id',saleControl.readById);
@@ -45,7 +48,7 @@ app.delete('/user/:id', userControl.delete);
 
 mongoose.connect(
   "mongodb://localhost:27017/sales"
-)
+);
 
 mongoose.connection.once('open', function(){
   console.log('We have data');
