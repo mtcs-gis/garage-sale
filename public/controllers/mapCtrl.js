@@ -1,41 +1,8 @@
 angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
 
-  var cities = [
-    {
-        city : 'Toronto',
-        desc : 'This is the best city in the world!',
-        lat : 43.7000,
-        long : -79.4000
-    },
-    {
-        city : 'New York',
-        desc : 'This city is aiiiiite!',
-        lat : 40.6700,
-        long : -73.9400
-    },
-    {
-        city : 'Chicago',
-        desc : 'This is the second best city in the world!',
-        lat : 41.8819,
-        long : -87.6278
-    },
-    {
-        city : 'Los Angeles',
-        desc : 'This city is live!',
-        lat : 34.0500,
-        long : -118.2500
-    },
-    {
-        city : 'Las Vegas',
-        desc : 'Sin City...\'nuff said!',
-        lat : 36.0800,
-        long : -115.1522
-    }
-];
 
 
-      $scope.where;
-      $scope.mark
+// intializing map
 
      function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -51,17 +18,30 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
           initMap();
 
 
+// building the geocoding function
 
-          function geocodeAddress(geocoder, resultsMap) {
+      function geocodeAddress(geocoder, resultsMap) {
             var address = document.getElementById('address').value;
+            if(address === ""){
+              return alert("Please insert an address");
+            }
             var time = document.getElementById('time').value;
+            if(time === ""){
+              return alert("Please Insert a Time");
+            }
+            var ampm = document.getElementById('am').value;
+            $scope.test;
+            $scope.ampm = ampm;
             $scope.address = address;
-            $scope.time = time;
+            $scope.time = "@ " + time;
             geocoder.geocode({'address': address}, function(results, status) {
               if (status === google.maps.GeocoderStatus.OK) {
+                console.log(results[0].formatted_address);
+                $scope.results = results[0].formatted_address;
                 resultsMap.setCenter(results[0].geometry.location);
                 resultsMap.setZoom(17);
-                var marker = new google.maps.Marker({
+
+                marker = new google.maps.Marker({
                   map: resultsMap,
                   position: results[0].geometry.location,
                   title: 'Garage Sale'
