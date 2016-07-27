@@ -1,0 +1,33 @@
+<div class="container text-center" ng-controller="mapCtrl">
+  <br>
+  <input type="text" name="name" value="" placeholder="Address" id="address">
+  <select name="" id="time">
+    <option value=null>Time</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+  <select class="" id="am" name="">
+    <option value="am">am</option>
+    <option value="pm">pm</option>
+  </select>
+  <button id="submit" ng-click="geocodeAddress()">Post</button>
+
+  <div class="container" id="map">
+  </div>
+
+  <div class="container">
+    <h2>{{address}}<cite> {{time}}{{ampm}}</cite></h2>
+    <h1></h1>
+  </div>
+
+</div>
