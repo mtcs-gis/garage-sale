@@ -4,7 +4,6 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
   $scope.address;
   $scope.sales;
 
-
   $scope.getSales = function(){
     mainServ.getSales()
     .then(function(res){
@@ -12,9 +11,8 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
     })
   }
 
-  $scope.postSale = function(sale){
-  //  angular.copy
-    mainServ.postSale(sale);
+  $scope.postSale = function(id, sale){
+    mainServ.postSale(id, sale);
   }
 
   $scope.updateSale = function(sale){
