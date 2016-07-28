@@ -1,5 +1,7 @@
 angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRouterProvider){
 
+
+
   $stateProvider
   .state("home", {
     url:"/",
@@ -7,6 +9,9 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
   }).state("map", {
     url:"/map",
     templateUrl: "./../templates/map.html"
+  }).state("createSale", {
+    url:"/createSale",
+    templateUrl: "./../templates/createSale.html"
   })
 
   $urlRouterProvider.otherwise("/");
