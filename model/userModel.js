@@ -5,13 +5,27 @@ var bcrypt = require('bcrypt-nodejs'); //encrypts the password
 
 var UserSchema = new mongoose.Schema({
 
-	userName: {type: String, required: true, unique: true},
-	firstName: {type: String, required: false},
-	lastName: {type: String, required: false},
-	email: {type: String, required: false, unique: true},
-	password: {type: String, required: true},
-	role: {type: String, required: false, default: 'User'},
-	loggedin: {type: Boolean},
+	local: {
+		userName: {type: String, required: true, unique: true},
+		firstName: {type: String, required: false},
+		lastName: {type: String, required: false},
+		selfEmail: {type: String, required: false},
+		password: {type: String, required: true}
+	},
+	facebook:{ 
+		id: String, 
+		token: String,
+		email: String, 
+		name: String
+	},
+	role: {
+		type: String, 
+		required: false, 
+		default: 'User'
+	},
+	loggedin: {
+		type: Boolean
+	},
 	salePost: [SaleSchema]
 
 });

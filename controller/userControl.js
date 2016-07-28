@@ -29,6 +29,19 @@ module.exports = {
 		})(req, res, next);
 	},
 
+	loginfacebook: function(req, res, next){
+		passport.authenticate('facebook', function(err, user, info){
+			// console.log(this);
+			if(err) { return next(err); }
+			if(!user) { return res.status(404).json(info.message) }
+			req.login(user, function(err){
+				if(err) { return next(err); }
+				return res.json({ message: 'You logged into FaceBook like a champ!', user: user });
+			});	
+		})(req, res, next);
+
+	},
+	
 	update: function(req, res, next){
 		
 		UserModel.findByIdAndUpdate(req.params.id, req.body, function(err, result){
