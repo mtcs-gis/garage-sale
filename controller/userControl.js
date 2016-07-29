@@ -95,13 +95,11 @@ module.exports = {
 					res.json(user)
 				}
 		});
-			}else {
+	} else {
 			res.json({
 				user:"anonymous"
 			})
 		}
-
-	}
 
 	},
 	addSale: function(req, res){
