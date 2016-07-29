@@ -1,5 +1,5 @@
 {
-  "name": "sales",
+  "name": "project",
   "version": "1.0.0",
   "description": "Something something GIS local stats something something",
   "main": "index.js",
@@ -28,6 +28,7 @@
     "express-session": "^1.14.0",
     "mongoose": "^4.5.7",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0"
   }
 }

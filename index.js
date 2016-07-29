@@ -1,5 +1,5 @@
 var express = require('express');
-// var cors = require('cors');
+//var cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
@@ -14,7 +14,8 @@ require('./passport/passport.js')(passport);
 
 var app = express();
 
-// app.use(cors);
+//app.use(cors);
+
 app.use(session(configSession));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -36,6 +37,11 @@ app.get('/users', userControl.getAllUsers);
 app.get('/user', userControl.getOneUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
+// app.post('/sale/:id', userControl.addSale);
+// app.put('/sale/:id', userControl.updateSale);
+app.post('/sale', saleControl.create );
+app.get('/sale', saleControl.read);
+app.put('/sale/:id', saleControl.update );
 
 // app.get('/sales', saleControl.read );
 // app.get('/sales:id',saleControl.readById);
