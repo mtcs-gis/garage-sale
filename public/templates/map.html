@@ -1,12 +1,15 @@
-<div class="container text-center" ng-controller="mapCtrl">
-  <button id="submit" ng-click="geocodeAddress()">Post</button>
+<div class="container text-center" ng-controller="mapCtrl" ng-init="initMap()">
+  <br>
+  <div id="map">
 
-  <div class="container" id="map">
   </div>
 
-  <div class="container">
-    <h2>{{address}}</h2>
-    <h1></h1>
+  <div class="">
+    <button type="button">List Addresses</button>
+    <h1>{{address}}</h1>
   </div>
+
+
+
 
 </div>
