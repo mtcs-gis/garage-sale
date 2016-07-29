@@ -11,7 +11,8 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
     templateUrl: "./../templates/map.html"
   }).state("createSale", {
     url:"/createSale",
-    templateUrl: "./../templates/createSale.html"
+    templateUrl: "./../templates/createSale.html",
+    controller: "formCtrl"
   })
 
   $urlRouterProvider.otherwise("/");

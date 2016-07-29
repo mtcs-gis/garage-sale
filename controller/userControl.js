@@ -1,9 +1,11 @@
 var UserModel = require('./../model/userModel');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var mongoose = require('mongoose');
 
 module.exports = {
-	
+
 	login: function(req, res, next){
 		passport.authenticate('local-login', { successRedirect: '/', failureRedirect: '/login' } , function(err, user, info){
 			// console.log(this);
@@ -12,11 +14,11 @@ module.exports = {
 			req.login(user, function(err){
 				if(err) { return next(err); }
 				return res.json({ message: 'You logged in like a champ!', user: user });
-			});	
+			});
 		})(req, res, next);
 
 	},
-	
+
 	signup: function(req, res, next){
 		passport.authenticate('local-signup', function(err, user, info){
 			//console.log('You signed up.', info);
@@ -37,13 +39,13 @@ module.exports = {
 			req.login(user, function(err){
 				if(err) { return next(err); }
 				return res.json({ message: 'You logged into FaceBook like a champ!', user: user });
-			});	
+			});
 		})(req, res, next);
 
 	},
-	
+
 	update: function(req, res, next){
-		
+
 		UserModel.findByIdAndUpdate(req.params.id, req.body, function(err, result){
 			if(err){
 				res.send(err);
