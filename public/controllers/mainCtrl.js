@@ -9,8 +9,8 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
     })
   }
 
-  $scope.postSale = function(id, sale){
-    mainServ.postSale(id, sale);
+  $scope.postSale = function(sale){
+    mainServ.postSale(sale);
   }
 
   $scope.updateSale = function(sale){

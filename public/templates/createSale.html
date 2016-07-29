@@ -1,19 +1,19 @@
 <div class="form-group">
     <hr>
-    <input class="form-control" placeholder="Title" ng-model="title">
+    <input class="form-control" placeholder="Title" ng-model="sale.name">
     <br>
-    <input class="form-control" placeholder="Start Date" ng-model="startDate">
+    <!-- <input class="form-control" placeholder="Date" ng-model="sale.startDate">
     <br>
-    <input class="form-control" placeholder="End Date" ng-model="endDate">
+    <input class="form-control" placeholder="End Date" ng-model="sale.endDate">
+    <br> -->
+    <input class="form-control" placeholder="Location" ng-model="sale.address">
     <br>
-    <input class="form-control" placeholder="Location" ng-model="location">
-    <br>
-    <input class="form-control" placeholder="Date" ng-model="date">
+    <input class="form-control" placeholder="Date" ng-model="sale.date">
     <br>
     <textarea class="form-control" placeholder="Comments" rows="8" cols="40"></textarea><br>
 
 
-    <button type="button" ng-click="postSale(title)">Post</button>
+    <button type="button" ng-click="postSale(sale)">Post</button>
 
 
 </div>
