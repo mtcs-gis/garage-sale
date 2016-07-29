@@ -1,7 +1,7 @@
 
 
-</div>
 <div class="container">
+
 <div class="login">
 <h1>Login</h1>
 	<form ng-submit="postlogin(username, secret)">
@@ -9,7 +9,6 @@
 		<input type="password" ng-model="secret" placeholder="Password">
 		<button class="btn" type="button" name="button">Login</button>
 	</form>
-
 </div>
 
 
@@ -20,8 +19,21 @@
 		<input type="passport" ng-model="password" placeholder="Password">
 	   <input placeholder="Submit" type="submit">
 </form>
-
 </div>
+
+<div class="facebook">
+<a href="/auth/facebook" ng-click="facebooksignup()">
+<img height="80px" lenght="160" ng-src="./../image/facebooklogin.png"/>
+</a>
+</div>
+
+
+<div class="logout">
+<form ng-submit="signout()">
+	<button type="submit">Logout</button>
+</form>
+</div>
+
 
 
 </div>
