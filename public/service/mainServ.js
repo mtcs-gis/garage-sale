@@ -1,5 +1,5 @@
 angular.module("garageApp").service("mainServ", function($http){
-  
+
 
   this.loginpostlogin = function(userlogin){
     return $http({
@@ -14,15 +14,15 @@ angular.module("garageApp").service("mainServ", function($http){
   };
 
  this.signuppostsignup = function(usersignup){
-  return $http({
-  method:"POST",
-  url:"/signup",
-  data: usersignup
- })
- .then(function(response){
-  //console.log(response.data);
-  return response.data;
- })
+    return $http({
+    method:"POST",
+    url:"/signup",
+    data: usersignup
+   })
+   .then(function(response){
+    //console.log(response.data);
+    return response.data;
+   })
  }
 
   this.getfacebooksignup = function(){

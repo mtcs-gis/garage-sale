@@ -10,7 +10,7 @@ module.exports = function(passport) { //call in passport as a parameter
 
     passport.serializeUser(function(user, done) {//serialize user and passport stores information about the login and session of the user
         console.log("USER", user);
-        done(null, user.id);//sets info to id
+        done(null, user._id);//sets info to id
     });
     passport.deserializeUser(function(id, done) {//deserializes to return user information after it has been serialized in a language that makes sense to us.
         console.log("ID", id);
@@ -62,7 +62,7 @@ module.exports = function(passport) { //call in passport as a parameter
                   var newUser = new User(req.body.local);
                   console.log("New User:" + newUser);
                    newUser.local.userName = userName;
-                   newUser.local.firstName = req.body.local.firstName;
+                   newUser.local.firstName = firstName;
                    newUser.local.lastName = lastName;
                    newUser.local.selfEmail = selfEmail;
                   newUser.local.password = newUser.generateHash(password); //hash password
