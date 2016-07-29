@@ -4,10 +4,10 @@
 <div class="container">
 <div class="login">
 <h1>Login</h1>
-	<form ng-submit="postlogin(loginemail, sercet)">
-		<input type="text" ng-model="loginemail" placeholder="Email">
-		<input type="password" ng-model="sercet" placeholder="Password">
-		<input placeholder="Submit" type="submit">
+	<form ng-submit="postlogin(username, secret)">
+		<input type="username" ng-model="username" placeholder="Username">
+		<input type="password" ng-model="secret" placeholder="Password">
+		<button class="btn" type="button" name="button">Login</button>
 	</form>
 
 </div>
@@ -23,9 +23,5 @@
 
 </div>
 
-<div class="facebook">
 
-    <img ng-src="./../imgs/facebooklogin.png" ng-click="facebooksignup()"/>
-
-</div>
 </div>

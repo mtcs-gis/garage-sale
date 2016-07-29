@@ -1,5 +1,7 @@
 var UserModel = require('./../model/userModel');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var mongoose = require('mongoose');
 
 module.exports = {
@@ -93,7 +95,7 @@ module.exports = {
 					res.json(user)
 				}
 		});
-			}else {
+	} else {
 			res.json({
 				user:"anonymous"
 			})

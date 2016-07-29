@@ -1,8 +1,6 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
-  $scope.map;
-  $scope.address;
-  $scope.sales;
+
 
   $scope.getSales = function(){
     mainServ.getSales()
@@ -19,10 +17,8 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
     mainServ.updateSale(sale);
   };
 
-
- 
   $scope.info;
- 
+
 $scope.postlogin = function(loginemail, sercet){
     var userlogin = {
      userName: loginemail,
@@ -30,7 +26,7 @@ $scope.postlogin = function(loginemail, sercet){
    };
       console.log(userlogin);
       mainServ.loginpostlogin(userlogin)
-          .then(function(response){     
+          .then(function(response){
         $scope.userlogin = "";
           //console.log($scope.userlogin);
       })
@@ -43,16 +39,17 @@ $scope.postsignup = function(signupemail, password){
       };
       mainServ.signuppostsignup(usersignup)
           .then(function(response){
-        $scope.usersignup = "";   
+        $scope.usersignup = "";
       })
   };
-  
+
  $scope.facebooksignup = function(){
       mainServ.getfacebooksignup()
         .then(function(response){
         $scope.info = response;
         });
-    };  
+    };
+>>>>>>> master
 
 
 

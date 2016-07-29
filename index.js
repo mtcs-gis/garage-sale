@@ -33,6 +33,7 @@ app.post('/signup', userControl.signup);
 app.get('/logout', userControl.logout);
 
 
+
 app.get('/users', userControl.getAllUsers);
 app.get('/user', userControl.getOneUser);
 app.put('/user/:id', userControl.update);
@@ -46,9 +47,10 @@ app.put('/sale/:id', saleControl.update );
 app.delete('/sale/:id', saleControl.delete);
 
 
-// app.get('/sales', saleControl.read );
-// app.get('/sales:id',saleControl.readById);
-// app.put('/sales:id',saleControl.update);
+app.get('/sales', saleControl.read );
+app.post('/sales', saleControl.create);
+app.get('/sales:id',saleControl.readById);
+app.put('/sales:id',saleControl.update);
 
 // passport.use(new FacebookStrategy({
 // 		clientID:'604081799753537',

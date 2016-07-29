@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/mtcs-gis/theProject#readme",
   "dependencies": {
-    "angular-google-maps": "^2.3.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cors": "^2.7.1",
