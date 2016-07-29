@@ -1,17 +1,11 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
 
+  // $scope.getSale = function(){
+  //   mainServ.getSale();
+  // }
 
-  $scope.getSales = function(){
-    mainServ.getSales()
-    .then(function(res){
-      $scope.sales = res;
-    })
-  }
 
-  $scope.postSale = function(sale){
-    mainServ.postSale(sale);
-  }
 
   $scope.updateSale = function(sale){
     mainServ.updateSale(sale);

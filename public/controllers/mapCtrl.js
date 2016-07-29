@@ -2,6 +2,18 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
 
 
 
+  $scope.postSale = function(sale){
+    mainServ.postSale(sale)
+    .then(function(res){
+    })
+  }
+
+  $scope.getSale = function(){
+    mainServ.getSale()
+    .then(function(res){
+    })
+  }
+
 
   $scope.initMap = function() {
     $scope.address;

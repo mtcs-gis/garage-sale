@@ -40,6 +40,7 @@ angular.module("garageApp").service("mainServ", function($http){
       method: 'GET',
       url: '/sales'
     }).then(function(res){
+      console.log(res);
       return res.data;
     })
   }

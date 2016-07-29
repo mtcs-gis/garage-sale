@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" ng-contoller="mapCtrl">
     <hr>
     <input class="form-control" placeholder="Title" ng-model="sale.name">
     <br>
@@ -14,6 +14,7 @@
 
 
     <button type="button" ng-click="postSale(sale)">Post</button>
+    <button type="button" ng-click="getSale()">GET</button>
 
 
 </div>
