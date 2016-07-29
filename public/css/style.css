@@ -4,12 +4,11 @@ body {
 }
 
 #map {
-  height: 420px;
-  width: 600px;
-  border: 4px solid black;
-  margin-top: 5rem;
+  height: 400px;
+  width: 800px;
 }
 
-.signupList {
+
+li {
   list-style: none;
 }
