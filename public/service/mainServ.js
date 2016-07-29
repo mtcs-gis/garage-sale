@@ -53,10 +53,10 @@ angular.module("garageApp").service("mainServ", function($http){
     })
   }
 
-  this.postSale = function(id, sale){
+  this.postSale = function(sale){
     return $http({
       method: 'POST',
-      url: '/sale/'+id,
+      url: '/sale/',
       data: sale
     }).then(function(res){
       return res.data;

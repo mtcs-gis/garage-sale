@@ -33,9 +33,9 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
             var geocoder = new google.maps.Geocoder();
 
               $scope.geocodeAddress(geocoder, map, data);
-              var result = "";
+              var result = " ";
               for(var i =1; i<data.length; i++){
-                result += data[i].address;
+                result += data[i].address + ", ";
               }
               $scope.address = result;
               return $scope.address;
@@ -46,13 +46,12 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
 
 
 
-          $scope.geocodeAddress = function(geocoder, resultsMap, data) {
+          $scope.geocodeAddress = function(geocoder, resultsMap, locations) {
 
 
-                  for(var i =0; i<data.length; i++){
-                   geocoder.geocode(data[i], function(results, status) {
+                  for(var i =0; i<locations.length; i++){
+                   geocoder.geocode(locations[i], function(results, status) {
                      if (status === google.maps.GeocoderStatus.OK) {
-                       resultsMap.setCenter(results[0].geometry.location);
                        resultsMap.setZoom(14);
 
                        marker = new google.maps.Marker({

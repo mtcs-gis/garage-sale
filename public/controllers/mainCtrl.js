@@ -49,7 +49,6 @@ $scope.postsignup = function(signupemail, password){
         $scope.info = response;
         });
     };
->>>>>>> master
 
 
 
