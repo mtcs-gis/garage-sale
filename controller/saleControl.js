@@ -1,4 +1,4 @@
-var saleModel = require('./../model/saleSchema.js');
+var saleModel = require('./../model/saleModel.js');
 
 module.exports = {
   create: function(req, res){

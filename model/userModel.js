@@ -7,20 +7,20 @@ var UserSchema = new mongoose.Schema({
 
 	local: {
 		userName: {type: String, required: true, unique: true},
-		firstName: {type: String, required: false},
-		lastName: {type: String, required: false},
-		selfEmail: {type: String, required: false},
+		firstName: {type: String},
+		lastName: {type: String},
+		selfEmail: {type: String},
 		password: {type: String, required: true}
 	},
-	facebook:{ 
-		id: String, 
+	facebook:{
+		id: String,
 		token: String,
-		email: String, 
+		email: String,
 		name: String
 	},
 	role: {
-		type: String, 
-		required: false, 
+		type: String,
+		required: false,
 		default: 'User'
 	},
 	loggedin: {
@@ -35,7 +35,7 @@ UserSchema.methods.generateHash = function(password) {
 };
 
 UserSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password); //compares the given password with the encrypted stored password
+    return bcrypt.compareSync(password, this.local.password); //compares the given password with the encrypted stored password
 };
 
 

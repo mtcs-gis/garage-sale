@@ -2,6 +2,21 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
 
 
+  $scope.getSales = function(){
+    mainServ.getSales()
+    .then(function(res){
+      $scope.sales = res;
+    })
+  }
+
+  $scope.postSale = function(id, sale){
+    mainServ.postSale(id, sale);
+  }
+
+  $scope.updateSale = function(sale){
+    mainServ.updateSale(sale);
+  };
+
    $scope.info;
 
   $scope.postlogin = function(username, sercet){

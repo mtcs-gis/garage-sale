@@ -20,10 +20,10 @@ module.exports = {
 	},
 
 	signup: function(req, res, next){
-		passport.authenticate('local-signup', function(err, user, info){
+		passport.authenticate('local-signup', function(err, user){
 			//console.log('You signed up.', info);
 			if(err) { return next(err); }
-			if(!user) { return res.status(404).json(info.message); }
+		//	if(!user) { return res.status(404).json(info.message); }
 			req.login(user, function(err){
 				if(err) { return next(err); }
 				return res.json({ message: 'You signed up like a champ!', user: user });
@@ -102,4 +102,32 @@ module.exports = {
 		}
 
 	}
+
+	},
+	addSale: function(req, res){
+		console.log(req.body);
+		UserModel.findByIdAndUpdate(
+			req.params.id,
+			{$push: {"salePost":req.body}},
+			{safe: true, upsert: true},
+			function(err, model){
+				if(err) console.log(err);
+				res.send("hallo");
+			}
+		)
+	},
+	updateSale: function(req, res){
+		console.log(req.body);
+		UserModel.findByIdAndUpdate(
+			req.params.id,
+			{$set: {"salePost":req.body}},
+			{safe: true, upsert: true},
+			function(err, model){
+				console.log(err);
+				res.send("hallo");
+			}
+		)
+
+}
+
 };
