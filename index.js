@@ -2,26 +2,21 @@ var express = require('express');
 //var cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var session = require('express-session');
-var config = require('./config.js');
-
 var passport = require('passport');
-
+var session = require('express-session');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('./config.js');
 var configSession = require('./passport/setsecret.js');
-
 require('./passport/passport.js')(passport);
 
-
 var app = express();
-
 //app.use(cors);
-
 app.use(session(configSession));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname + '/public'));
 
 var userControl = require('./controller/userControl.js');
 var saleControl = require('./controller/saleControl.js')
