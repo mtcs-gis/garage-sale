@@ -43,28 +43,21 @@ $scope.postsignup = function(signupemail, password){
       })
   };
 
+ $scope.signout = function(){
+  mainServ.getsignout()
+  .then(function(response){
+    window.location.href = 'http://localhost:3000';
+  })
+}
+  
  $scope.facebooksignup = function(){
-      mainServ.getfacebooksignup()
-        .then(function(response){
-        $scope.info = response;
-        });
-    };
+
+        $location.path('/home');
+    }; 
 
 
 
 
-// $scope.facebooksignup = function(id, token, email, name){
-//   var userfacebook = {
-//     id:id,
-//     token:token,
-//     email:email,
-//     name:name
-//   };
-//   mainServ.getfacebooksignup(userfacebook)
-//     .then(function(response){
-//     $scope.userfacebook = "";
-//   })
-// };
 
 
 });

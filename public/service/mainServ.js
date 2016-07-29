@@ -73,6 +73,15 @@ angular.module("garageApp").service("mainServ", function($http){
     })
   }
 
+  this.getsignout = function(){
+  return $http({
+    method:"GET",
+    url:"/logout"
+  })
+  .then(function(response){
+    return response;
+  })
+  }
 
 
 });
