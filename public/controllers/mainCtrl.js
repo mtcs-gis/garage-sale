@@ -73,13 +73,13 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
     //
     //     $location.path('/home');
     // };
-=======
-
- $scope.facebooksignup = function(){
-
-        $location.path('/home');
-    };
->>>>>>> master
+// =======
+//
+//  $scope.facebooksignup = function(){
+//
+//         $location.path('/home');
+//     };
+// >>>>>>> master
 
 
 
