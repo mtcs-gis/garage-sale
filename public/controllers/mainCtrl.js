@@ -37,6 +37,13 @@ $scope.postsignup = function(signupemail, password){
       })
   };
 
+ $scope.signout = function(){
+  mainServ.getsignout()
+  .then(function(response){
+    window.location.href = 'http://localhost:3000';
+  })
+}
+
  $scope.facebooksignup = function(){
       mainServ.getfacebooksignup()
         .then(function(response){
@@ -58,6 +65,14 @@ $scope.postsignup = function(signupemail, password){
 //     $scope.userfacebook = "";
 //   })
 // };
+
+    //
+    //     $location.path('/home');
+    // };
+
+
+
+
 
 
 });
