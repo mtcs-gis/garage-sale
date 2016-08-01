@@ -37,6 +37,7 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
                 address: "401 S Black Bozeman"
               }
             ];
+            $scope.address = data;
 
             var map = new google.maps.Map(document.getElementById('map'), {
              zoom: 12,
@@ -45,15 +46,8 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
             var geocoder = new google.maps.Geocoder();
 
               $scope.geocodeAddress(geocoder, map, data);
-              var result = " ";
-              for(var i =1; i<data.length; i++){
-                result += data[i].address + ", ";
-              }
-              $scope.address = result;
-              return $scope.address;
 
             };
-
 
 
 
@@ -64,11 +58,12 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
                   for(var i =0; i<locations.length; i++){
                    geocoder.geocode(locations[i], function(results, status) {
                      if (status === google.maps.GeocoderStatus.OK) {
-                       resultsMap.setZoom(14);
+                       resultsMap.setZoom(13);
 
                        marker = new google.maps.Marker({
                          map: resultsMap,
-                         position: results[0].geometry.location
+                         position: results[0].geometry.location,
+                         title: "A-Z"
                        });
 
                      } else {
