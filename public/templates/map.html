@@ -1,14 +1,15 @@
 <!-- remember to put ng-init with initMap() here -->
 
-<div class="container text-center" ng-controller="mapCtrl" ng-init="initMap()">
+<div class="container text-center" ng-controller="mapCtrl" ng-init="getSale()">
   <br>
   <div id="map">
 
   </div>
+  <button type="button" name="button">Get</button>
 
-  <div class="" ng-repeat="loc in address">
+  <div class="" ng-repeat="loc in address track by $index">
     <!-- <button type="button">List Addresses</button> -->
-    <h1>{{loc.address}}</h1>
+    <h1>{{address[$index].address}}</h1>
   </div>
 
 

@@ -35,15 +35,18 @@ angular.module("garageApp").service("mainServ", function($http){
     })
   }
 
+  //this is for getting all the sales
+
   this.getSales = function(){
     return $http({
       method: 'GET',
       url: '/sales'
     }).then(function(res){
-      console.log(res);
       return res.data;
     })
   }
+
+  // this is for getting just one sale!
 
   this.getSale = function(id){
     return $http({
