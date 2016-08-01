@@ -1,6 +1,6 @@
 angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
  var address;
- $scope.title = "Post"
+ $scope.title = "Post";
 
 
 // $scope.initMap = function() {
@@ -30,8 +30,6 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
           $scope.title = "Saved"
         })
       }, 1000)
-
-
 }
 
 
