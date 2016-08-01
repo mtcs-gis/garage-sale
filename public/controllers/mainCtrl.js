@@ -9,10 +9,6 @@ angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
     })
   }
 
-  $scope.postSale = function(sale){
-    mainServ.postSale(sale);
-  }
-
   $scope.updateSale = function(sale){
     mainServ.updateSale(sale);
   };
@@ -49,11 +45,11 @@ $scope.postsignup = function(signupemail, password){
     window.location.href = 'http://localhost:3000';
   })
 }
-  
+
  $scope.facebooksignup = function(){
 
         $location.path('/home');
-    }; 
+    };
 
 
 
