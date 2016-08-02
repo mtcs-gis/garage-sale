@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs'); //encrypts the password
 var UserSchema = new mongoose.Schema({
 
 	local: {
-		userName: String,
+		userName: {type: String, unique: true},
 		password: String
 	},
 	facebook: {

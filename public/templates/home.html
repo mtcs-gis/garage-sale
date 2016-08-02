@@ -1,38 +1,45 @@
 
 
-<div class="container">
+<div class="container" ng-controller="loginCtrl">
 
-<div class="login">
-<h1>Login</h1>
-	<form ng-submit="postlogin(username, secret)">
-		<input type="username" ng-model="username" placeholder="Username">
-		<input type="password" ng-model="secret" placeholder="Password">
-		<button class="btn" type="button" name="button">Login</button>
+	<div ng-show="hideStuff">
+	<div class="login">
+	<h1>Login</h1>
+		<form ng-submit="postLogin(loginEmail, secret)">
+			<input type="email" ng-model="loginEmail" placeholder="Username">
+			<input type="password" ng-model="secret" placeholder="Password">
+			<input placeholder="Submit" type="submit">
+		</form>
+	</div>
+
+
+	<div class="signup">
+	<h1>Sign Up</h1>
+	  <form ng-submit="postSignUp(signUpEmail, passWord)">
+			<input type="email" ng-model="signUpEmail" placeholder="Email Address"/>
+			<input type="password" ng-model="passWord" placeholder="Password"/>
+		  	<input placeholder="Submit" type="submit">
 	</form>
-</div>
+	</div>
 
 
-<div class="signup">
-<h1>Sign Up</h1>
-  <form ng-submit="postsignup(signupemail, password)">
-		<input type="email" ng-model="signupemail" placeholder="Email Address">
-		<input type="passport" ng-model="password" placeholder="Password">
-	   <input placeholder="Submit" type="submit">
-</form>
-</div>
-
-<div class="facebook">
-<a href="/auth/facebook" ng-click="facebooksignup()">
-<img height="80px" lenght="160" ng-src="./../image/facebooklogin.png"/>
-</a>
-</div>
+	<div class="facebook">
+	<a href="/auth/facebook" ng-click="facebooksignup()">
+	<img height="80px" lenght="160" ng-src="./../image/facebooklogin.png"/>
+	</a>
+	</div>
+	</div>
 
 
-<div class="logout">
-<form ng-submit="signout()">
-	<button type="submit">Logout</button>
-</form>
-</div>
+
+	<div class="profilepage" ng-show="profilePage">
+	<br>
+	<br>
+	<button class="btn" type="button" ui-sref="profile">Click to Continue to Profile Page</button>
+	<div>
+
+
+	
 
 
 
