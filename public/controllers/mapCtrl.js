@@ -8,23 +8,37 @@ $scope.title = "Post";
 
 //projecting the map on the page function
 
-  $scope.initMap = function(){
-  var newMap = new google.maps.Map(document.getElementById('map'), {
-  zoom: 12,
-  center: {lat: 45.674788, lng: -111.094465}
+
+$scope.initMap = function(location){
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: {lat: 45.674788, lng: -111.094465}
   });
+  var marker = new google.maps.Marker({
+    position: location
+  });
+  marker.setMap(map);
 }
 
 
 
+
+
+
+
+
+
+
+
+
 //new maker that has been pulled from the database.
-$scope.makeMarker = function(newMap, markerPos){
-  marker = new google.maps.Marker({
-   setMap: newMap,
-   position: markerPos,
-   title: "A-Z"
-  });
-};
+// $scope.makeMarker = function(newMap, markerPos){
+//   marker = new google.maps.Marker({
+//    map: $scope.initMap(),
+//    position: markerPos,
+//    title: "A-Z"
+//   });
+// };
 
 
 
@@ -34,29 +48,31 @@ $scope.postSale = function(sale){
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode(newAddress, function(results,status){
     if(status === google.maps.GeocoderStatus.OK){
-      geoLocation = results[0].geometry.location;
-
+      sale.address = results[0].geometry.location;
+      console.log(sale.address);
       //Calling makeMarker function here with geoLocation as  parameter
 
-      $scope.makeMarker(geoLocation);
 
     } else {
       console.log("didn't work because of " + status);
     }
+
   })
 
   // setting a timeout to avoid 'spatial query limit' error
 
   $scope.title = "Saving"
-  window.setTimeout(function(){
     mainServ.postSale(sale)
     .then(function(res){
       console.log(res);
       sale.address = "";
       $scope.title = "Saved"
     })
-  }, 1000);
 };
+
+
+
+
 
 
 
@@ -101,8 +117,10 @@ $scope.postSale = function(sale){
     // $scope.initMap = function() {
     //
     //     var map = new google.maps.Map(document.getElementById('map'), {
+
     //      zoom: 12,
     //      center: {lat: 45.674788, lng: -111.094465}
+
     //     });
 
         // var geocoder = new google.maps.Geocoder();
