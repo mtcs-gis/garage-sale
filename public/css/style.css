@@ -18,3 +18,7 @@ li {
     right: 20px;
     position: fixed;
 } 
+
+.profile{
+	text-align: -webkit-left;
+}

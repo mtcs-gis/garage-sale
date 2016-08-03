@@ -27,12 +27,14 @@ angular.module("garageApp")
   }
   // app.get('/user', userControl.getOneUser);
   this.getUpdateUserID = function(user){
+    // console.log(user);
     return $http({
       method:"PUT",
       url:"/user/" + user._id,
       data: user
     })
     .then(function(response){
+      // console.log(response.data);
       return response;
     })
   }
@@ -56,7 +58,7 @@ angular.module("garageApp")
       url:"/auth/facebook"
     })
     .then(function(response){
-      console.log(response);
+      console.log("You have Signed in to Facebook like champ!");
       return response.data;
     })
   }

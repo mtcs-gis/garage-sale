@@ -5,17 +5,27 @@
 	<h1> This is your Profile Page</h1>
 
 
-<div class="userProfile" ng-repeat="userInfo in userProfile"> 
-<h3 placeholder="email" ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.userName}}</h3>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.password}}</h3>
-<br>
-<br>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.firstName}}</h3>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.middleName}}</h3>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.familyName}}</h3>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.profilePic}}</h3>
-<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.homeAddress}}</h3>
-	<form ng-show="changer" ng-submit="updateUser(userInfo); changer=false">
+<div class="profileinfo"> 
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.local.userName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.firstName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.middleName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.familyName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.profilePic}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.homeAddress}}</h3>
+<button ng-click="toggleCustom1()">Click to Update Profile</button>
+	<form ng-show="custom1" ng-submit="updateUser(userProfile); changer=false">
+		<input placeholder="Email" type="email" ng-model="userProfile.local.userName">
+		<input placeholder="First Name" type="text" ng-model="userProfile.firstName">
+		<input placeholder="Middle Name" type="text" ng-model="userProfile.middleName">
+		<input placeholder="Last Name" type="text" ng-model="userProfile.familyName">
+		<input placeholder="Home Address" type="text" ng-model="userProfile.homeAddress">
+		<button type="submit">Up-Date Information</button>
+	</form>
+</div>
+
+<!-- <button ng-click="toggleCustom1()">Click to Update Profile</button>
+<div ng-hide="custom1" class="stuff">
+	<form ng-submit="updateUser(userInfo)">
 		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
 		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
 		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
@@ -23,26 +33,23 @@
 		<input placeholder="Home Address" type="text" ng-model="userInfo.homeAddress">
 		<button type="submit">Up-Date Information</button>
 	</form>
-</div>
-
-<!-- <div ng-hide="stuff" class="stuff" ng-submit="updateUser(userInfo)" >
-		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
-		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
-		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
-		<input placeholder="Last Name" type="text" ng-model="userInfo.familyName">
-		<input placeholder="Home Address" type="text" ng-model="userInfo.homeAddress">
-		<button type="submit">Up-Date Information</button>
 </div> -->
 
 
 
+ <button ng-click="toggleCustom()">User Guide</button>
+        <div class="guide" ng-hide="custom">
+            <p>List of Directions</p>
+        </div>
+        
 
 
 
 
 
 
-<button>Link Account with Facebook</button>
+
+<!-- <button>Link Account with Facebook</button> -->
 
 <div class="logout">
 	<form ng-submit="signOut()">
