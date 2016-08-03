@@ -1,5 +1,5 @@
 angular.module("garageApp").controller("profileCtrl", function($scope, mainServ){
-
+	$updateInfo = true;
 	$scope.document;// profile page
   
 

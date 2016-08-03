@@ -25,31 +25,22 @@
 	</form>
 </div>
 
-<div class="popup">
-<h2 class="text-center">Angularjs-Popup</h2>
-<button ng-click="open()" class="btn btn-warning">Simple Popup</button>
-</div>
+<div ng-hide="updateInfo" class="updateInfo">
 
-
-<div class="modal-header">
-<h3 class="modal-title">Header</h3>
-</div>
-<div class="modal-body">
-<span><b>Passed Parameter after click:</b></span>{{title1}}
-In this Popup, we are passing the parameter "John" after clicking on a button.
-</div>
-<div class="modal-footer">
-<button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
-</div>
-
-<!-- <div class="list" ng-show="HideNames" ng-repeat="name in names">
-
-	<h3 ng-hide="changer" ng-dblclick="changer=true">{{name.description}}<a class="btn" ng-click="deleteCreature(name)">Delete</a>
-	</h3>
-	<form ng-show="changer" ng-submit="upDateCreature(name); changer=false">
-		<input type="text" ng-model="name.description">
+	<form  ng-submit="upDateUserID(userInfo)">
+		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
+		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
+		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
+		<input placeholder="Last Name" type="text" ng-model="userInfo.familyName">
+		<input placeholder="Home Address" type="text" ng-model="userInfo.homeAddress">
+		<button type="submit">Up-Date Information</button>
 	</form>
-</div> -->
+
+</div>
+
+
+
+
 
 
 
