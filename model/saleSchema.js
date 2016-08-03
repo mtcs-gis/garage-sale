@@ -6,34 +6,11 @@ var mongoose = require('mongoose');
 // };
 
 var saleSchema = new mongoose.Schema({
-	SaleName: {
-		type: String,
-		validate: /[a-z]/,
-		require: true
-		},
-	startDate: {
-		type: Date,
-		require: true
-		},
-	endDate:{
-		type: Date,
-		require: true
-		},
-	startTime:{
-		type: String,
-		require: true
-		},
-	endTime:{
-		type: String,
-		require: true
-		},
-	saleLoc: {
-		type: Number,
-		require: true
-		},
-	saleComments: {
-		type: String
-		}
+	name: {type:String},
+  	address: {type:String},
+  	lat: {type:Number},
+  	lng: {type:Number},
+  	date:{type:Date, default:'8/1/2016'}
 
 
 });
