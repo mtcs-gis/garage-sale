@@ -31,6 +31,8 @@ $scope.initMap = function(location){
 
 
 
+
+
 //new maker that has been pulled from the database.
 // $scope.makeMarker = function(newMap, markerPos){
 //   marker = new google.maps.Marker({
