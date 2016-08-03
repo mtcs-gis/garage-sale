@@ -54,12 +54,10 @@ angular.module('garageApp').controller('mapCtrl', function($scope,mainServ){
                      if (status === google.maps.GeocoderStatus.OK) {
                        resultsMap.setCenter(results[0].geometry.location);
                        resultsMap.setZoom(14);
-
                        marker = new google.maps.Marker({
                          map: resultsMap,
                          position: results[0].geometry.location
                        });
-
                      } else {
                        alert('Geocode was not successful for the following reason: ' + status);
                      }
