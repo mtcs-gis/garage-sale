@@ -1,29 +1,43 @@
-angular.module("garageApp").service("mainServ", function($http){
+angular.module("garageApp")
+.service("mainServ", function($http){
 
 
-  this.loginpostlogin = function(userlogin){
+  this.loginPostLogin = function(userLogin){
+      //console.log(userLogin);
     return $http({
-    method:"POST",
-    url:"/login",
-    data: userlogin
-  })
-  .then(function(response){
-      console.log(response.data);
+      method:"POST",
+      url:"/login",
+      data: userLogin
+    })
+    .then(function(response){
+      //console.log(response.data);
+      console.log("You have logged in like a champ!");
       return response.data;
     });
   };
 
- this.signuppostsignup = function(usersignup){
+  this.getKnownUser = function(){
+    return $http({
+      method:"GET",
+      url:"/user"
+    })
+    .then(function(response){
+      return response;
+    })
+  }
+
+ this.signupPostSignUp = function(userSignUp){
     return $http({
     method:"POST",
     url:"/signup",
-    data: usersignup
+    data: userSignUp
    })
    .then(function(response){
     //console.log(response.data);
+    console.log("You have Signed in like a champ!");
     return response.data;
    })
- }
+  }
 
   this.getfacebooksignup = function(){
     return $http({
@@ -31,8 +45,22 @@ angular.module("garageApp").service("mainServ", function($http){
       url:"/auth/facebook"
     })
     .then(function(response){
+      console.log(response);
       return response.data;
     })
+  }
+
+  this.getSignOut = function(){
+
+  return $http({
+    method:"GET",
+    url:"/logout"
+  })
+  .then(function(response){
+    console.log("SignOut");
+    return response;
+
+  })
   }
 
   this.getSales = function(){
@@ -43,6 +71,8 @@ angular.module("garageApp").service("mainServ", function($http){
       return res.data;
     })
   }
+
+  // this is for getting just one sale!
 
   this.getSale = function(id){
     return $http({
@@ -73,15 +103,7 @@ angular.module("garageApp").service("mainServ", function($http){
     })
   }
 
-  this.getsignout = function(){
-  return $http({
-    method:"GET",
-    url:"/logout"
-  })
-  .then(function(response){
-    return response;
-  })
-  }
+
 
 
 });

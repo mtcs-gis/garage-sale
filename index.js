@@ -59,7 +59,7 @@ app.post('/sales', saleControl.create);
 app.get('/sales:id',saleControl.readById);
 app.put('/sales:id',saleControl.update);
 
-app.get('/home', function(req, res){
+app.get('/profile', function(req, res){
 	res.send(req.user);
 });
 

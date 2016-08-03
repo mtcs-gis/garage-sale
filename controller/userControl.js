@@ -7,10 +7,9 @@ var mongoose = require('mongoose');
 module.exports = {
 
 	login: function(req, res, next){
-		passport.authenticate('local-login', { successRedirect: '/', failureRedirect: '/login' } , function(err, user, info){
-			// console.log(this);
+		passport.authenticate('local-login', function(err, user, info){
 			if(err) { return next(err); }
-			if(!user) { return res.status(404).json(info.message) }
+			if(!user) { return res.json({ message: "Please enter your Email & Password "}) } //{ return res.status(404).json(info.message) }
 			req.login(user, function(err){
 				if(err) { return next(err); }
 				return res.json({ message: 'You logged in like a champ!', user: user });
@@ -21,9 +20,9 @@ module.exports = {
 
 	signup: function(req, res, next){
 		passport.authenticate('local-signup', function(err, user, info){  
-			console.log('You signed up.', info);
+			//console.log('You signed up.', info);
 			if(err) { return next(err); }
-			if(!user) { return res.status(404).json(info.message); }
+			if(!user) { return res.json({ message: "Please enter a Email & Password "}) } //{ return res.status(404).json(info.message); }
 			req.login(user, function(err){
 				if(err) { return next(err); }
 				return res.json({ message: 'You signed up like a champ!', user: user });
@@ -56,10 +55,11 @@ module.exports = {
 	},
 
 	logout: function(req, res, next){
-		// req.session.destroy();
-		req.logout();
-		// res.redirect('/');
-		res.json({message: 'You logged out like a champ!'});
+		 req.session.destroy();
+		 req.logout();
+		 //res.redirect('/');
+		 res.json({message: 'You logged out like a champ!'});
+		 console.log("Signout");
 
 	},
 
