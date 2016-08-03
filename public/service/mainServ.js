@@ -51,7 +51,7 @@ angular.module("garageApp")
   }
 
   this.getSignOut = function(){
-    
+
   return $http({
     method:"GET",
     url:"/logout"
@@ -71,6 +71,8 @@ angular.module("garageApp")
       return res.data;
     })
   }
+
+  // this is for getting just one sale!
 
   this.getSale = function(id){
     return $http({
@@ -101,7 +103,7 @@ angular.module("garageApp")
     })
   }
 
-  
+
 
 
 });

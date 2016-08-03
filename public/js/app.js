@@ -20,7 +20,7 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
   .state("createSale", {
     url:"/createSale",
     templateUrl: "./../templates/createSale.html",
-    controller: "formCtrl"
+    controller: "mapCtrl"
   })
 
   $urlRouterProvider.otherwise("/");

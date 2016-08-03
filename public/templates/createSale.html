@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" ng-contoller="mapCtrl">
     <hr>
     <input class="form-control" placeholder="Title" ng-model="sale.name">
     <br>
@@ -13,7 +13,6 @@
     <textarea class="form-control" placeholder="Comments" rows="8" cols="40"></textarea><br>
 
 
-    <button type="button" ng-click="postSale(sale)">Post</button>
-
+    <button type="button" ng-click="postSale(sale)">{{title}}</button>
 
 </div>
