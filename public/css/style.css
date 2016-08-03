@@ -12,3 +12,9 @@ body {
 li {
   list-style: none;
 }
+
+.logout{
+	top: 20px;
+    right: 20px;
+    position: fixed;
+} 

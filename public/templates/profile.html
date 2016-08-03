@@ -1,13 +1,63 @@
 <div class="profile">
 
-	<h1>Welcome {{profilename}} !!!</h1>
+	<h1>Welcome {{profilename}}!!!</h1>
 
 	<h1> This is your Profile Page</h1>
 
 
+<div class="userProfile" ng-repeat="userInfo in document"> 
+<h3 placeholder="email" ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.userName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.password}}</h3>
+<br>
+<br>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.firstName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.middleName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.familyName}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.profilePic}}</h3>
+<h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.homeAddress}}</h3>
+	<form ng-show="changer" ng-submit="upDateUserID(userInfo); changer=false">
+		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
+		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
+		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
+		<input placeholder="Last Name" type="text" ng-model="userInfo.familyName">
+		<input placeholder="Home Address" type="text" ng-model="userInfo.homeAddress">
+		<button type="submit">Up-Date Information</button>
+	</form>
+</div>
+
+<div class="popup">
+<h2 class="text-center">Angularjs-Popup</h2>
+<button ng-click="open()" class="btn btn-warning">Simple Popup</button>
+</div>
 
 
-	<div class="logout">
+<div class="modal-header">
+<h3 class="modal-title">Header</h3>
+</div>
+<div class="modal-body">
+<span><b>Passed Parameter after click:</b></span>{{title1}}
+In this Popup, we are passing the parameter "John" after clicking on a button.
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+</div>
+
+<!-- <div class="list" ng-show="HideNames" ng-repeat="name in names">
+
+	<h3 ng-hide="changer" ng-dblclick="changer=true">{{name.description}}<a class="btn" ng-click="deleteCreature(name)">Delete</a>
+	</h3>
+	<form ng-show="changer" ng-submit="upDateCreature(name); changer=false">
+		<input type="text" ng-model="name.description">
+	</form>
+</div> -->
+
+
+
+
+
+<button>Link Account with Facebook</button>
+
+<div class="logout">
 	<form ng-submit="signOut()">
 		<button type="submit">Logout</button>
 	</form>

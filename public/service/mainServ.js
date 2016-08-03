@@ -25,8 +25,19 @@ angular.module("garageApp")
       return response;
     })
   }
+  // app.get('/user', userControl.getOneUser);
+  this.getUpdateUserID = function(user){
+    return $http({
+      method:"PUT",
+      url:"/user/" + user._id,
+      data: user
+    })
+    .then(function(response){
+      return response;
+    })
+  }
 
- this.signupPostSignUp = function(userSignUp){
+  this.signupPostSignUp = function(userSignUp){
     return $http({
     method:"POST",
     url:"/signup",
