@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 // };
 
 var saleSchema = new mongoose.Schema({
-	SaleName: {
+	name: {
 		type: String,
 		validate: /[a-z]/,
 		require: true
@@ -20,22 +20,24 @@ var saleSchema = new mongoose.Schema({
 		require: true
 		},
 	startTime:{
-		type: String,
-		require: true
+		type: String
 		},
 	endTime:{
+		type: String
+		},
+	address: {
 		type: String,
 		require: true
 		},
-	saleLoc: {
-		type: Number,
-		require: true
-		},
+	lat:{
+		type: Number
+	},
+	lng:{
+		type: Number
+	},
 	saleComments: {
 		type: String
-		}
-
-
+	}
 });
 
 module.exports = saleSchema
