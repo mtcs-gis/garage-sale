@@ -1,13 +1,14 @@
 angular.module("garageApp").controller("profileCtrl", function($scope, mainServ){
-	$updateInfo = true;
-	$scope.document;// profile page
+	$scope.stuff = false;
+	$scope.userProfile;// profile page
   
 
 	(function (userInfo){
 		mainServ.getKnownUser(userInfo)
 		.then(function(response){
 			//console.log(response);
-		  $scope.document = response;
+			$scope.userProfile = response;
+		  //console.log($scope.userProfile);
 		  var userID = response.data;
 		  var user;
 		  if (userID.local){
@@ -32,9 +33,10 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
  //    	})
 	// }
 
-	$scope.upDateUserID = function(userInfo){
-		var user = userInfo;
-		//console.log(changeInfo);
+	$scope.updateUser = function(updateInfo){
+		//console.log(updateinfo);
+		var user = updateInfo;
+		//console.log(updateinfo);
     mainServ.getUpdateUserID(user)
       .then(function(response){
       	console.log(response.data);

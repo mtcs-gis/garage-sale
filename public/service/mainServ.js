@@ -16,7 +16,7 @@ angular.module("garageApp")
     });
   };
 
-  this.getKnownUser = function(){
+  this.getKnownUser = function(userInfo){
     return $http({
       method:"GET",
       url:"/user"

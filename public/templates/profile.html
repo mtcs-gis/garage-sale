@@ -5,7 +5,7 @@
 	<h1> This is your Profile Page</h1>
 
 
-<div class="userProfile" ng-repeat="userInfo in document"> 
+<div class="userProfile" ng-repeat="userInfo in userProfile"> 
 <h3 placeholder="email" ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.userName}}</h3>
 <h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.local.password}}</h3>
 <br>
@@ -15,7 +15,7 @@
 <h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.familyName}}</h3>
 <h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.profilePic}}</h3>
 <h3 ng-hide="changer" ng-dblclick="changer=true">{{userInfo.homeAddress}}</h3>
-	<form ng-show="changer" ng-submit="upDateUserID(userInfo); changer=false">
+	<form ng-show="changer" ng-submit="updateUser(userInfo); changer=false">
 		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
 		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
 		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
@@ -25,18 +25,14 @@
 	</form>
 </div>
 
-<div ng-hide="updateInfo" class="updateInfo">
-
-	<form  ng-submit="upDateUserID(userInfo)">
+<!-- <div ng-hide="stuff" class="stuff" ng-submit="updateUser(userInfo)" >
 		<input placeholder="Email" type="email" ng-model="userInfo.local.userName">
 		<input placeholder="First Name" type="text" ng-model="userInfo.firstName">
 		<input placeholder="Middle Name" type="text" ng-model="userInfo.middleName">
 		<input placeholder="Last Name" type="text" ng-model="userInfo.familyName">
 		<input placeholder="Home Address" type="text" ng-model="userInfo.homeAddress">
 		<button type="submit">Up-Date Information</button>
-	</form>
-
-</div>
+</div> -->
 
 
 
