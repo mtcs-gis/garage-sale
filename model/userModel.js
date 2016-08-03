@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
+var SaleSchema = require('./saleSchema.js');
 
 var UserSchema = new mongoose.Schema({
 
@@ -22,13 +23,14 @@ var UserSchema = new mongoose.Schema({
         }],
     },
 	role: {
-		type: String, 
-		required: false, 
+		type: String,
+		required: false,
 		default: 'User'
 	},
 	loggedin: {
 		type: Boolean
-	}
+	},
+	sale: [SaleSchema]
 
 });
 

@@ -45,7 +45,7 @@ app.get('/users', userControl.getAllUsers);
 app.get('/user', userControl.getOneUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
-// app.post('/sale/:id', userControl.addSale);
+app.post('/sale/:id', userControl.addSale);
 // app.put('/sale/:id', userControl.updateSale);
 app.post('/sale', saleControl.create );
 app.get('/sale', saleControl.read);
