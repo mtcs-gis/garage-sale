@@ -48,7 +48,7 @@ $scope.postSale = function(sale){
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode(newAddress, function(results,status){
     if(status === google.maps.GeocoderStatus.OK){
-      sale.address = results[0].geometry.location;
+      sale.address = results[0].geometry;
       console.log(sale.address);
       //Calling makeMarker function here with geoLocation as  parameter
 
