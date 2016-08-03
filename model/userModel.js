@@ -9,6 +9,11 @@ var UserSchema = new mongoose.Schema({
 		userName: {type: String, unique: true},
 		password: String
 	},
+    firstName: String,
+    middleName: String,
+    familyName: String,
+    profilePic: String,
+    homeAddress: String,
 	facebook: {
         id         : String,
         token      : String,

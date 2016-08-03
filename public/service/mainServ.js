@@ -16,7 +16,7 @@ angular.module("garageApp")
     });
   };
 
-  this.getKnownUser = function(){
+  this.getKnownUser = function(userInfo){
     return $http({
       method:"GET",
       url:"/user"
@@ -25,8 +25,21 @@ angular.module("garageApp")
       return response;
     })
   }
+  // app.get('/user', userControl.getOneUser);
+  this.getUpdateUserID = function(user){
+    // console.log(user);
+    return $http({
+      method:"PUT",
+      url:"/user/" + user._id,
+      data: user
+    })
+    .then(function(response){
+      // console.log(response.data);
+      return response;
+    })
+  }
 
- this.signupPostSignUp = function(userSignUp){
+  this.signupPostSignUp = function(userSignUp){
     return $http({
     method:"POST",
     url:"/signup",
@@ -45,7 +58,7 @@ angular.module("garageApp")
       url:"/auth/facebook"
     })
     .then(function(response){
-      console.log(response);
+      console.log("You have Signed in to Facebook like champ!");
       return response.data;
     })
   }
