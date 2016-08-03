@@ -1,18 +1,52 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
-
+//initializing variables g scope
+$scope.saleInfo;
+$scope.contentString;
+$scope.latLng;
 var map;
-$scope.initMap = function(){
+var addPos;
+var info;
+var markerPos;
+// creating initmap to get the map started
+$scope.initMap = function(markerPos){
   map = new google.maps.Map(document.getElementById('map'),{
-    center: {lat:45.6770, lng: -111.0429},
-    zoom: 10
+    center: {lat:45.6708, lng: -111.0678},
+    zoom: 13
+  });
+
+  $scope.contentString = "hello";
+
+  var infowindow = new google.maps.InfoWindow({
+    content: $scope.contentString
+  });
+  var marker = new google.maps.Marker({
+    position: markerPos,
+    map: map,
+    title: "A"
+  });
+
+  marker.addListener('click', function(){
+    infowindow.open(map,marker);
   });
 }
+
+//end of map function
+
+// beginning of getSales
 
 $scope.getSales = function(){
   mainServ.getSales()
   .then(function(res){
-    $scope.sales = res;
+    console.log(res);
+    for(var i =0; i<res.length; i++){
+    addPos = {
+      lat: res[i].lng,
+      lng: res[i].lat
+    }
+    $scope.initMap(addPos);
+    $scope.saleInfo = res;
+    }
   })
 }
 
