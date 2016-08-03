@@ -15,12 +15,13 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
   })
   .state("map", {
     url:"/map",
-    templateUrl: "./../templates/map.html"
+    templateUrl: "./../templates/map.html",
+    controller: "mainCtrl"
   })
   .state("createSale", {
     url:"/createSale",
     templateUrl: "./../templates/createSale.html",
-    controller: "mapCtrl"
+    controller: "formCtrl"
   })
 
   $urlRouterProvider.otherwise("/");

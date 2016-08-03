@@ -34,43 +34,37 @@ $scope.initMap = function(location){
 
 
 //new maker that has been pulled from the database.
-// $scope.makeMarker = function(newMap, markerPos){
-//   marker = new google.maps.Marker({
-//    map: $scope.initMap(),
-//    position: markerPos,
-//    title: "A-Z"
-//   });
+
+
+
+
+// 
+// $scope.postSale = function(sale){
+//   var newAddress = { address: sale.address + " Bozeman"};
+//   var geocoder = new google.maps.Geocoder();
+//   geocoder.geocode(newAddress, function(results,status){
+//     if(status === google.maps.GeocoderStatus.OK){
+//       sale.address = results[0].geometry;
+//       console.log(sale.address);
+//       //Calling makeMarker function here with geoLocation as  parameter
+//
+//
+//     } else {
+//       console.log("didn't work because of " + status);
+//     }
+//
+//   })
+//
+//   // setting a timeout to avoid 'spatial query limit' error
+//
+//   $scope.title = "Saving"
+//     mainServ.postSale(sale)
+//     .then(function(res){
+//       console.log(res);
+//       sale.address = "";
+//       $scope.title = "Saved"
+//     })
 // };
-
-
-
-
-$scope.postSale = function(sale){
-  var newAddress = { address: sale.address + " Bozeman"};
-  var geocoder = new google.maps.Geocoder();
-  geocoder.geocode(newAddress, function(results,status){
-    if(status === google.maps.GeocoderStatus.OK){
-      sale.address = results[0].geometry;
-      console.log(sale.address);
-      //Calling makeMarker function here with geoLocation as  parameter
-
-
-    } else {
-      console.log("didn't work because of " + status);
-    }
-
-  })
-
-  // setting a timeout to avoid 'spatial query limit' error
-
-  $scope.title = "Saving"
-    mainServ.postSale(sale)
-    .then(function(res){
-      console.log(res);
-      sale.address = "";
-      $scope.title = "Saved"
-    })
-};
 
 
 
