@@ -16,9 +16,9 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     (function (userInfo){
         mainServ.getKnownUser(userInfo)
         .then(function(response){
-            //console.log(response);
+            console.log(response.data);
             $scope.userProfile = response.data;
-          //console.log($scope.userProfile);
+          console.log($scope.userProfile);
           var userID = response.data;
           var user;
           if (userID.local){
@@ -40,7 +40,7 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
         // console.log(updateInfo);
         var user = updateInfo;
         //console.log(updateInfo);
-   mainServ.getUpdateUserID(user)
+    mainServ.getUpdateUserID(user)
      .then(function(response){
          //console.log(response.data);
            //$scope.getUserID(); //updates the list!
@@ -53,4 +53,6 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
         .then(function(response){
               window.location.href = 'http://localhost:3000';
         })
-    };
+    }
+
+  })

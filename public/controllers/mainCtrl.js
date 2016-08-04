@@ -8,6 +8,8 @@ var map;
 var addPos;
 var info;
 var markerPos;
+var marker;
+
 // creating initmap to get the map started
 $scope.initMap = function(markerPos){
   map = new google.maps.Map(document.getElementById('map'),{
@@ -21,15 +23,19 @@ $scope.initMap = function(markerPos){
     content: $scope.contentString
   });
 
-  var marker = new google.maps.Marker({
-    position: markerPos,
-    map: map,
-    title: "A"
-  });
+// CALL GETSALE HERE
 
-  marker.addListener('click', function(){
-    infowindow.open(map,marker);
-  });
+  $scope.getSales();
+
+  // var marker = new google.maps.Marker({
+  //   position: markerPos,
+  //   map: map,
+  //   title: "A"
+  // });
+  //
+  // marker.addListener('click', function(){
+  //   infowindow.open(map,marker);
+  // });
 }
 
 //end of map function
@@ -46,8 +52,12 @@ $scope.getSales = function(){
         lng: res[i].lat
       }
 
-// move marker function here
-    $scope.initMap(addPos);
+      marker = new google.maps.Marker({
+        position: addPos,
+        map: map,
+        title: "A"
+      });
+    // $scope.initMap(addPos);
     $scope.saleInfo = res;
     }
   })
