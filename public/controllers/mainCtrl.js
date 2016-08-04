@@ -1,9 +1,6 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
 //initializing variables g scope
-$scope.saleInfo;
-$scope.contentString;
-$scope.latLng;
 var map;
 var addPos;
 var info;
@@ -16,13 +13,6 @@ $scope.initMap = function(markerPos){
     center: {lat:45.6708, lng: -111.0678},
     zoom: 13
   });
-
-  $scope.contentString = "hello";
-
-  var infowindow = new google.maps.InfoWindow({
-    content: "hello"
-  });
-
   $scope.getUserSales();
 
 
@@ -45,17 +35,20 @@ $scope.getUserSales = function(){
         marker = new google.maps.Marker({
           position: addPos,
           map: map,
-          title: "A"
+          animation:google.maps.Animation.DROP,
+          title: 'A-Z'
         });
+        marker.addListener('click', toggleBounce);
         console.log(marker);
       }
     }
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
-    var infowindow = new google.maps.InfoWindow({
-      content: "hello"
-    });
+    function toggleBounce(){
+      if(marker.getAnimation() !== null){
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
   })
 }
 
