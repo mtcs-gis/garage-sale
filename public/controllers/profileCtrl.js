@@ -1,8 +1,5 @@
 angular.module("garageApp").controller("profileCtrl", function($scope, mainServ){
 
-
-  
-
 	(function (){
 			mainServ.getKnownUser()
 			.then(function(response){
@@ -18,17 +15,15 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
 			});
 		})()
 
-	
+
 
 	$scope.signOut = function(){
     //console.log("SignOut");
     mainServ.getSignOut()
-    .then(function(response){  
+    .then(function(response){
       window.location.href = 'http://localhost:3000';
     })
   };
-
-
 
 });
 
@@ -63,4 +58,3 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
 	// 	})
 	// };
 	// $scope.displayName();
-
