@@ -5,18 +5,21 @@
   <title>Yard Sailrs</title>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body ng-controller="mainCtrl">
   <br>
-  <br>
-  <br>
-  <div class="container text-center">
-    <button class="btn" type="button" ui-sref="home">Home</button>
-    <button class="btn" type="button" ui-sref="map">Map</button>
-    <button class="btn" type="button" ui-sref="createSale">Create Sale</button>
-    <ui-view></ui-view>
+  <div class="container link-container">
+    <h1>Yard Sailrs</h1>
+    <button class="btn link-buttons" type="button" ui-sref="home">Home</button>
+    <button class="btn link-buttons" type="button" ui-sref="map">Map</button>
+    <button class="btn link-buttons" type="button" ui-sref="createSale">Create Sale</button>
+    <hr>
   </div>
+
+  <ui-view></ui-view>
+
 
 
 
