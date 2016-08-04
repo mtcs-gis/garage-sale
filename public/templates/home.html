@@ -5,10 +5,10 @@
 
 
 
-			<div class="form-group">
+			<div class="form-group" ng-show="hideStuff">
 				<h2>Login</h2>
 
-				<div class="login-container" ng-show="hideStuff">
+				<div class="login-container">
 					<div class="facebook">
 						<a href="/auth/facebook" ng-click="facebooksignup()">with Facebook</a>
 					</div>
@@ -24,7 +24,7 @@
 			</div>
 
 
-		<div class="form-group">
+		<div class="signup-container" ng-show="hideStuff">
 			<h2>Sign Up</h2>
 
 		  <form ng-submit="postSignUp(signUpEmail, passWord)">
@@ -36,10 +36,7 @@
 			</form>
 		</div>
 
-
-
-
-	</div>
+		</div>
 
 
 
