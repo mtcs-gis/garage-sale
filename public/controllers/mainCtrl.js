@@ -20,10 +20,11 @@ $scope.initMap = function(markerPos){
   $scope.contentString = "hello";
 
   var infowindow = new google.maps.InfoWindow({
-    content: $scope.contentString
+    content: "hello"
   });
 
   $scope.getUserSales();
+
 
 }
 
@@ -37,21 +38,24 @@ $scope.getUserSales = function(){
     console.log(res[0].sale);
     for(var i = 0; i < res.length; i++){
       for(var j = 0; i < res[i].sale.length; j++){
-      addPos = {
-        lng: res[i].sale[j].lat,
-        lat: res[i].sale[j].lng
-      }
-      console.log(addPos);
-
-      marker = new google.maps.Marker({
-        position: addPos,
-        map: map,
-        title: "A"
-      });
-    // $scope.initMap(addPos);
-    $scope.saleInfo = res;
+        addPos = {
+          lng: res[i].sale[j].lat,
+          lat: res[i].sale[j].lng
+        }
+        marker = new google.maps.Marker({
+          position: addPos,
+          map: map,
+          title: "A"
+        });
+        console.log(marker);
       }
     }
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+    var infowindow = new google.maps.InfoWindow({
+      content: "hello"
+    });
   })
 }
 
