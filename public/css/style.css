@@ -49,3 +49,13 @@ a:hover {
 li {
   list-style: none;
 }
+
+.logout{
+	top: 20px;
+    right: 20px;
+    position: fixed;
+} 
+
+.profile{
+	text-align: -webkit-left;
+}

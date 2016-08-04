@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 
+var saleSchema = ('./saleSchema.js')
+
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
+
 
 var UserSchema = new mongoose.Schema({
 
@@ -8,6 +11,11 @@ var UserSchema = new mongoose.Schema({
 		userName: {type: String, unique: true},
 		password: String
 	},
+    firstName: String,
+    middleName: String,
+    familyName: String,
+    profilePic: String,
+    homeAddress: String,
 	facebook: {
         id         : String,
         token      : String,
@@ -22,14 +30,14 @@ var UserSchema = new mongoose.Schema({
         }],
     },
 	role: {
-		type: String, 
-		required: false, 
+		type: String,
+		required: false,
 		default: 'User'
 	},
 	loggedin: {
 		type: Boolean
-	}
-
+	},
+    sale:[saleSchema]
 });
 
 UserSchema.methods.generateHash = function(password) {
