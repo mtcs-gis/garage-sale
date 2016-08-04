@@ -1,4 +1,5 @@
 angular.module("garageApp").controller("formCtrl", function($scope, mainServ){
+  
   $scope.yard;
   
   (function (userInfo){
@@ -8,9 +9,10 @@ angular.module("garageApp").controller("formCtrl", function($scope, mainServ){
       $scope.yard = response.data;
       console.log($scope.yard);
      
-    })
-;
+    });
+    
   })()
+
   var geocoder = new google.maps.Geocoder();
 
 
