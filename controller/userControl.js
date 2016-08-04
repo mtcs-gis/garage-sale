@@ -110,7 +110,7 @@ module.exports = {
 			{safe: true, upsert: true},
 			function(err, model){
 				if(err) console.log(err);
-				res.send("hallo");
+				res.send(res);
 			}
 		)
 	},
@@ -122,7 +122,7 @@ module.exports = {
 			{safe: true, upsert: true},
 			function(err, model){
 				console.log(err);
-				res.send("hallo");
+				res.send(res);
 			}
 		)
 
