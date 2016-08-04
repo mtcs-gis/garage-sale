@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 
+var saleSchema = ('./saleSchema.js')
+
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
-var SaleSchema = require('./saleSchema.js');
+
 
 var UserSchema = new mongoose.Schema({
 
@@ -35,8 +37,7 @@ var UserSchema = new mongoose.Schema({
 	loggedin: {
 		type: Boolean
 	},
-	sale: [SaleSchema]
-
+    sale:[saleSchema]
 });
 
 UserSchema.methods.generateHash = function(password) {
