@@ -20,6 +20,7 @@ $scope.initMap = function(markerPos){
   var infowindow = new google.maps.InfoWindow({
     content: $scope.contentString
   });
+
   var marker = new google.maps.Marker({
     position: markerPos,
     map: map,
@@ -40,10 +41,12 @@ $scope.getSales = function(){
   .then(function(res){
     console.log(res);
     for(var i =0; i<res.length; i++){
-    addPos = {
-      lat: res[i].lng,
-      lng: res[i].lat
-    }
+      addPos = {
+        lat: res[i].lng,
+        lng: res[i].lat
+      }
+
+// move marker function here
     $scope.initMap(addPos);
     $scope.saleInfo = res;
     }
