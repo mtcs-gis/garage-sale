@@ -1,13 +1,15 @@
 angular.module('garageApp').controller('loginCtrl', function($scope, $location, mainServ){
-  
+
   $scope.loginEmail = "Admin@yahoo";
   $scope.secret = "Admin";
   $scope.signUpEmail = "Admin@yahoo";
   $scope.passWord = "Admin";
 
-  $scope.postLogin = function(loginEmail, secret){
-      // $scope.displayName = loginEmail;
-      // $scope.welcome = true;
+  $scope.verify;
+  
+
+
+  $scope.postLogin = function(loginEmail, secret){ 
     var userLogin = {
       userName: loginEmail,
       password: secret
@@ -15,9 +17,16 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     //console.log("Login");
     mainServ.loginPostLogin(userLogin)
     .then(function(response){
-      $location.path('profile');
-      $scope.userLogin = "";
-        //console.log($scope.userLogin);
+      var verify = response;
+      console.log(verify.user);
+       if (verify.user){
+          $location.path('profile');
+          $scope.userLogin = "";
+        } else {
+          alert("Please Sign up!")
+        }
+      //$location.path('profile');
+      //$scope.userLogin = "";
     })
   };
 
@@ -45,6 +54,8 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
       mainServ.getKnownUser()
       .then(function(response){
         //console.log(response);
+        $scope.verify = response.data;
+        console.log($scope.verify);
         var userID = response.data;
         var user;
         if (userID.facebook){
