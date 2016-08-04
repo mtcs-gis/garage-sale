@@ -96,12 +96,12 @@ angular.module("garageApp")
   //   })
   // }
 
-  this.postSale = function(user){
-      console.log(user);
+  this.postSale = function(id, sale){
+      console.log(sale);
     return $http({
-      method: 'PUT',
-      url: '/user/' + user._id,
-      data: user
+      method: 'POST',
+      url: '/sale/' + id,
+      data: sale
     }).then(function(res){
       console.log(res.data);
       return res.data;
