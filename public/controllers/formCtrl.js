@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("formCtrl", function($scope, mainServ){
+angular.module("garageApp").controller("formCtrl", function($scope, $location, mainServ){
 
   $scope.userId;
 
@@ -6,8 +6,16 @@ angular.module("garageApp").controller("formCtrl", function($scope, mainServ){
     mainServ.getKnownUser(userInfo)
     .then(function(response){
       console.log(response);
-      $scope.userId = response.data._id;
-      console.log($scope.userId);
+      var verify = response.data;
+     // console.log($scope.userId);
+     if (verify.local){    
+          $scope.userId = response.data._id;
+        } else if (verify.facebook){
+          $scope.userId = response.data._id;
+        } else {
+          alert("Please Login To Create Sale");
+          $location.path('/');
+        }
 
     });
 
