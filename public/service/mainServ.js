@@ -85,6 +85,16 @@ angular.module("garageApp")
     })
   }
 
+  this.getAllUserSales = function(){
+    return $http({
+      method: 'GET',
+      url: '/users'
+    }).then(function(res){
+      // console.log(res);
+      return res.data;
+    })
+  }
+
   // // this is for getting just one sale!
 
   // this.getSale = function(id){

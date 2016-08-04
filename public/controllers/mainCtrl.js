@@ -23,34 +23,25 @@ $scope.initMap = function(markerPos){
     content: $scope.contentString
   });
 
-// CALL GETSALE HERE
+  $scope.getUserSales();
 
-  $scope.getSales();
-
-  // var marker = new google.maps.Marker({
-  //   position: markerPos,
-  //   map: map,
-  //   title: "A"
-  // });
-  //
-  // marker.addListener('click', function(){
-  //   infowindow.open(map,marker);
-  // });
 }
 
 //end of map function
 
 // beginning of getSales
 
-$scope.getSales = function(){
-  mainServ.getSales()
+$scope.getUserSales = function(){
+  mainServ.getAllUserSales()
   .then(function(res){
-    console.log(res);
-    for(var i =0; i<res.length; i++){
+    console.log(res[0].sale);
+    for(var i = 0; i < res.length; i++){
+      for(var j = 0; i < res[i].sale.length; j++){
       addPos = {
-        lat: res[i].lng,
-        lng: res[i].lat
+        lng: res[i].sale[j].lat,
+        lat: res[i].sale[j].lng
       }
+      console.log(addPos);
 
       marker = new google.maps.Marker({
         position: addPos,
@@ -59,6 +50,7 @@ $scope.getSales = function(){
       });
     // $scope.initMap(addPos);
     $scope.saleInfo = res;
+      }
     }
   })
 }
@@ -66,6 +58,14 @@ $scope.getSales = function(){
 $scope.updateSale = function(sale){
   mainServ.updateSale(sale);
 };
+
+// $scope.getUserSales = function(){
+//   mainServ.getAllUserSales()
+//   .then(function(res){
+//     console.log(res);
+//   })
+// }
+
 
 
 
