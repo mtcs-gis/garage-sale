@@ -76,14 +76,24 @@ angular.module("garageApp")
   })
   }
 
-  // this.getSales = function(){
-  //   return $http({
-  //     method: 'GET',
-  //     url: '/sales'
-  //   }).then(function(res){
-  //     return res.data;
-  //   })
-  // }
+  this.getSales = function(){
+    return $http({
+      method: 'GET',
+      url: '/sales'
+    }).then(function(res){
+      return res.data;
+    })
+  }
+
+  this.getAllUserSales = function(){
+    return $http({
+      method: 'GET',
+      url: '/users'
+    }).then(function(res){
+      // console.log(res);
+      return res.data;
+    })
+  }
 
   // // this is for getting just one sale!
 
