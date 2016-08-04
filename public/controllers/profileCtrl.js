@@ -3,12 +3,12 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     $scope.stuff = true;
     $scope.userProfile;// profile page
 
-     $scope.custom = true;
+    $scope.custom = true;
        $scope.toggleCustom = function() {
            $scope.custom = $scope.custom === false ? true: false;
        };
 
-   $scope.custom1 = false;
+    $scope.custom1 = false;
        $scope.toggleCustom1 = function() {
            $scope.custom1 = $scope.custom1 === false ? true: false;
        };
@@ -16,9 +16,9 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     (function (userInfo){
         mainServ.getKnownUser(userInfo)
         .then(function(response){
-            console.log(response.data);
+            //console.log(response.data);
             $scope.userProfile = response.data;
-          console.log($scope.userProfile);
+          //console.log($scope.userProfile);
           var userID = response.data;
           var user;
           if (userID.local){

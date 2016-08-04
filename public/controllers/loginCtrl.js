@@ -4,7 +4,6 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
   $scope.secret = "Admin";
   $scope.signUpEmail = "Admin@yahoo";
   $scope.passWord = "Admin";
-
   $scope.verify;
   
 
@@ -18,7 +17,7 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     mainServ.loginPostLogin(userLogin)
     .then(function(response){
       var verify = response;
-      console.log(verify.user);
+      //console.log(verify.user);
        if (verify.user){
           $location.path('profile');
           $scope.userLogin = "";
@@ -55,7 +54,7 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
       .then(function(response){
         //console.log(response);
         $scope.verify = response.data;
-        console.log($scope.verify);
+        //console.log($scope.verify);
         var userID = response.data;
         var user;
         if (userID.facebook){
