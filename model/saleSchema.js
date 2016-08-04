@@ -1,10 +1,5 @@
 var mongoose = require('mongoose');
 
-
-// function validator (v) {
-//   return v.length > 1;
-// };
-
 var saleSchema = new mongoose.Schema({
 	name: {type:String},
   	address: {type:String},
