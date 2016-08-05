@@ -6,6 +6,9 @@ var saleSchema = new mongoose.Schema({
   	address: {type:String},
   	lat: {type:Number},
   	lng: {type:Number},
+  	startDate: {type:Date},
+  	endDate: {type:Date},
+  	comment: {type:String},
   	date:{type:Date, default:'8/1/2016'}
 
 });

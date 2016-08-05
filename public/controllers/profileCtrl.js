@@ -2,6 +2,7 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     $scope.stuff = false;
     $scope.stuff = true;
     $scope.userProfile;// profile page
+    $scope.yardData;
 
     $scope.custom = true;
        $scope.toggleCustom = function() {
@@ -16,25 +17,28 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     (function (userInfo){
         mainServ.getKnownUser(userInfo)
         .then(function(response){
-            //console.log(response.data);
-            $scope.userProfile = response.data;
-          //console.log($scope.userProfile);
+      
+          $scope.userProfile = response.data;
+          $scope.yardData = response.data.sale;
+
           var userID = response.data;
           var user;
+
           if (userID.local){
             user = userID.local.userName;
           } else {
             user = userID.facebook.name;
           }
               $scope.profilename = user;
-
-              // $scope.email = userID.local.userName;
-              // $scope.password = userID.local.password;
-              //$scope.getUserID();//update the User
         });
     })()
 
-
+    $scope.deleteSale = function(stuff){
+      mainServ.deleteSaleStuff(stuff)
+      .then(function(response){
+        console.log(response);
+      })
+    }
 
     $scope.updateUser = function(updateInfo){
         // console.log(updateInfo);

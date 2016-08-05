@@ -35,7 +35,7 @@ $scope.initMap = function(markerPos){
 $scope.getUserSales = function(){
   mainServ.getAllUserSales()
   .then(function(res){
-    console.log(res[0].sale);
+    //console.log(res[0].sale);
     for(var i = 0; i < res.length; i++){
       for(var j = 0; i < res[i].sale.length; j++){
         addPos = {
@@ -47,7 +47,7 @@ $scope.getUserSales = function(){
           map: map,
           title: "A"
         });
-        console.log(marker);
+        //console.log(marker);
       }
     }
     marker.addListener('click', function() {
