@@ -4,15 +4,16 @@
       <h2>Create Sale</h2>
         <input class="form-control" placeholder="Title" ng-model="sale.name">
         <br>
-        <!-- <input class="form-control" placeholder="Date" ng-model="sale.startDate">
+        <input class="form-control" type="date" placeholder="Date" ng-model="sale.startDate">
         <br>
-        <input class="form-control" placeholder="End Date" ng-model="sale.endDate">
-        <br> -->
+        <input class="form-control" type="date" placeholder="End Date" ng-model="sale.endDate">
+        <br>
         <input class="form-control" placeholder="Address" ng-model="sale.address">
         <br>
         <input class="form-control" type="date" placeholder="Date" ng-model="sale.date">
         <br>
-        <textarea class="form-control" placeholder="Comments" rows="8" cols="40"></textarea><br>
+        <textarea class="form-control" placeholder="Comments" ng-model="sale.comment" rows="8" cols="40"></textarea>
+        <br>
 
     </div>
     <button class="btn-success" type="button" ng-click="postSale(sale)">Click</button>

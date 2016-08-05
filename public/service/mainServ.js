@@ -25,6 +25,18 @@ angular.module("garageApp")
       return res;
     })
   }
+  this.deleteSaleStuff = function(user){
+    return $http({
+      method:"GET",
+      url:"/user/" + user._id,
+      data:user
+    })
+    .then(function(res){
+      return res;
+    })
+  }
+
+
   // app.get('/user', userControl.getOneUser);
   this.getUpdateUserID = function(user){
     // console.log(user);

@@ -125,7 +125,17 @@ module.exports = {
 				res.send(model);
 			}
 		)
-
-}
+	},
+	deleteSale: function(req, res){
+		console.log(req.body);
+		UserModel.findByIdAndRemove(
+			req.params.id,
+			{$set: {"sale":req.body}},
+			{safe: true, upsert: true},
+			function(err, model){
+				console.log(err);
+				res.send(model);
+			})
+	}
 
 };
