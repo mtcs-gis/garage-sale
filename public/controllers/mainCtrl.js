@@ -10,6 +10,8 @@ var markerPos;
 var marker;
 
 // var lable = [];
+var results;
+$scope.count;
 $scope.saleInfo = [];
 
 
@@ -17,32 +19,36 @@ $scope.saleInfo = [];
 
 // creating initmap to get the map started
 
-$scope.initMap = function(markerPos){
-  map = new google.maps.Map(document.getElementById('map'),{
-    center: {lat:45.6708, lng: -111.0678},
-    zoom: 13
-  });
-  $scope.getUserSales();
-}
+  $scope.initMap = function(){
+    map = new google.maps.Map(document.getElementById('map'),{
+      center: {lat:45.6708, lng: -111.0678},
+      zoom: 13
+    });
+    $scope.getUserSales();
+  }
 
 //end of map function
 
 // beginning of getSales
 
-$scope.getUserSales = function(){
-  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var labelIndex = 0;
-  var content;
-  var infoWindow;
-  mainServ.getAllUserSales()
-  .then(function(res){
-    //console.log(res[0].sale);
-    for(var i = 0; i < res.length; i++){
-      for(var j = 0; i < res[i].sale.length; j++){
-        addPos = {
-          lng: res[i].sale[j].lat,
-          lat: res[i].sale[j].lng
-        }
+  $scope.getUserSales = function(){
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var labelIndex = 0;
+    var content;
+    var infoWindow;
+    mainServ.getAllUserSales()
+    .then(function(res){
+      //console.log(res[0].sale);
+      for(var i = 0; i < res.length; i++){
+        for(var j = 0; i < res[i].sale.length; j++){
+          $scope.count = results
+          addPos = {
+            lng: res[i].sale[j].lat,
+            lat: res[i].sale[j].lng
+          }
+
+// still looking to do circles
+
         marker = new google.maps.Marker({
           position: addPos,
           map: map,
@@ -56,13 +62,14 @@ $scope.getUserSales = function(){
         // lable.push(marker.label);
       }
     }
-    return saleInfo;
+    $scope.saleInfo;
+    console.log($scope.saleInfo);
   })
 }
 
-$scope.updateSale = function(sale){
-  mainServ.updateSale(sale);
-};
+  $scope.updateSale = function(sale){
+    mainServ.updateSale(sale);
+  };
 
 // $scope.getUserSales = function(){
 //   mainServ.getAllUserSales()
