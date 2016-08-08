@@ -1,21 +1,28 @@
 angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
 
 //initializing variables g scope
+
 var map;
 var addPos;
 var info;
+var infoWindow;
 var markerPos;
 var marker;
 
+// var lable = [];
+$scope.saleInfo = [];
+
+
+
+
 // creating initmap to get the map started
+
 $scope.initMap = function(markerPos){
   map = new google.maps.Map(document.getElementById('map'),{
     center: {lat:45.6708, lng: -111.0678},
     zoom: 13
   });
   $scope.getUserSales();
-
-
 }
 
 //end of map function
@@ -23,6 +30,10 @@ $scope.initMap = function(markerPos){
 // beginning of getSales
 
 $scope.getUserSales = function(){
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var labelIndex = 0;
+  var content;
+  var infoWindow;
   mainServ.getAllUserSales()
   .then(function(res){
     //console.log(res[0].sale);
@@ -35,20 +46,17 @@ $scope.getUserSales = function(){
         marker = new google.maps.Marker({
           position: addPos,
           map: map,
+          color: "blue",
           animation:google.maps.Animation.DROP,
-          title: 'A-Z'
+          label: labels[labelIndex++ % labels.length]
         });
-        marker.addListener('click', toggleBounce);
-        console.log(marker);
+
+        content = res[i].sale[j];
+        $scope.saleInfo.push(content);
+        // lable.push(marker.label);
       }
     }
-    function toggleBounce(){
-      if(marker.getAnimation() !== null){
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
+    return saleInfo;
   })
 }
 
