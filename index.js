@@ -32,6 +32,10 @@ app.post('/login', userControl.login);
 app.post('/signup', userControl.signup);
 app.get('/logout', userControl.logout);
 
+
+
+
+app.get('/auth/facebook', userControl.loginfacebook);
 app.get('/auth/facebook', userControl.loginfacebook);
 app.get("/auth/facebook/callback", passport.authenticate('facebook', {
 		successRedirect: "/",
