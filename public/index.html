@@ -11,11 +11,22 @@
 <body ng-controller="mainCtrl">
   <br>
   <div class="container link-container">
+
+    
+
     <h1>Yard Sailrs</h1>
-    <button class="btn link-buttons" type="button" ui-sref="home">Home</button>
-    <button class="btn link-buttons" type="button" ui-sref="map">Map</button>
+    <button class="btn link-buttons" id="mapButton" type="button" ui-sref="map" ng-click="initMap()">Map</button>
+    <br>
     <button class="btn link-buttons" type="button" ui-sref="createSale">Create Sale</button>
-    <hr>
+  </div>
+
+  <div ng-hide="logOutStuff" class="logout">
+    <form ng-submit="signOut()">
+      <button class="btn btn-primary" type="submit">Logout</button>
+    </form>
+  </div>
+  <div class="profilebtn">
+      <button class="btn btn-success" type="button" ui-sref="profile">Profile</button>
   </div>
 
   <ui-view></ui-view>

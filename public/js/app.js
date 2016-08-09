@@ -3,9 +3,9 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
 
 
   $stateProvider
-  .state("home", {
-    url:"/",
-    templateUrl: "./../templates/home.html",
+  .state("login", {
+    url:"/login",
+    templateUrl: "./../templates/login.html",
     controller: "loginCtrl"
   })
   .state("profile", {
@@ -14,7 +14,7 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
     controller: "profileCtrl"
   })
   .state("map", {
-    url:"/map",
+    url:"/",
     templateUrl: "./../templates/map.html",
     controller: "mainCtrl"
   })
@@ -23,6 +23,17 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
     templateUrl: "./../templates/createSale.html",
     controller: "formCtrl"
   })
+  .state("reset", {
+    url:"/reset",
+    templateUrl: "./../templates/reset.html",
+    //controller: "resetCtrl"
+  })
+  .state("forgot", {
+    url:"/forgot",
+    templateUrl: "./../templates/forgot.html"
+    //controller: "forgotCtrl"
+  })
+
 
   $urlRouterProvider.otherwise("/");
 

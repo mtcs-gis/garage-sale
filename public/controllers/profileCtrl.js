@@ -4,34 +4,30 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     $scope.userProfile;// profile page
     $scope.yardData;
 
-    $scope.custom = true;
+
+
+    $scope.custom = false;
        $scope.toggleCustom = function() {
            $scope.custom = $scope.custom === false ? true: false;
        };
 
-    $scope.custom1 = false;
-       $scope.toggleCustom1 = function() {
-           $scope.custom1 = $scope.custom1 === false ? true: false;
-       };
+  $scope.userId;
 
-    (function (userInfo){
-        mainServ.getKnownUser(userInfo)
-        .then(function(response){
-      
-          $scope.userProfile = response.data;
-          $scope.yardData = response.data.sale;
+  (function (userInfo){
+    mainServ.getKnownUser(userInfo)
+    .then(function(response){
+      //console.log(response);
+      var verify = response.data;
+     // console.log($scope.userId);
+     if (verify.local){    
+          $scope.userId = response.data._id;
+        } else if (verify.facebook){
+          $scope.userId = response.data._id;
+        } else {
+         $location.url('/login');
+        }
 
-          var userID = response.data;
-          var user;
-
-          if (userID.local){
-            user = userID.local.userName;
-          } else {
-            user = userID.facebook.name;
-          }
-              $scope.profilename = user;
-        });
-    })()
+    });
 
     $scope.deleteSale = function(stuff){
       mainServ.deleteSaleStuff(stuff)
@@ -51,12 +47,12 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
          })
      }
 
-    $scope.signOut = function(){
+  $scope.signOut = function(){
         console.log("SignOut");
-    mainServ.getSignOut()
+        mainServ.getSignOut()
         .then(function(response){
               window.location.href = 'http://localhost:3000';
         })
-    }
+  }
 
   })
