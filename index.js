@@ -22,7 +22,7 @@ var engine = require('consolidate');
 
 var options = {
 	auth: {
-		api_key: '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'
+		
 	}
 };
 var mailer = nodemailer.createTransport(sgTransport(options));
