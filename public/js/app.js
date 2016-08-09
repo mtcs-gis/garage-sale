@@ -23,6 +23,17 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
     templateUrl: "./../templates/createSale.html",
     controller: "formCtrl"
   })
+  .state("reset", {
+    url:"/reset",
+    templateUrl: "./../templates/reset.html",
+    //controller: "resetCtrl"
+  })
+  .state("forgot", {
+    url:"/forgot",
+    templateUrl: "./../templates/forgot.html"
+    //controller: "forgotCtrl"
+  })
+
 
   $urlRouterProvider.otherwise("/");
 

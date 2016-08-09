@@ -28,7 +28,16 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
       //$scope.userLogin = "";
     })
   };
+  $scope.forgotPassword = function(lostPassword){
+    var reSetting = {
+      userName: lostPassword
+         };
+    mainServ.getforgotPassword(reSetting)
+    .then(function(response){
+      console.log(response);
 
+    })
+  };
   $scope.postSignUp = function(signUpEmail, passWord){
     // $scope.displayName = signUpEmail;
     // $scope.welcome = true;

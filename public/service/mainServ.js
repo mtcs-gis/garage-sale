@@ -3,18 +3,28 @@ angular.module("garageApp")
 
 
   this.loginPostLogin = function(userLogin){
-      //console.log(userLogin);
     return $http({
       method:"POST",
       url:"/login",
       data: userLogin
     })
     .then(function(res){
-      //console.log(response.data);
       console.log("You have logged in like a champ!");
       return res.data;
     });
   };
+
+  this.getforgotPassword = function(reSetting){
+    return $http({
+      method:"POST",
+      url:"/forgot",
+      data:reSetting
+    })
+    .then(function(res){
+      console.log(res.data);
+      return res.data;
+    })
+  }
 
   this.getKnownUser = function(userInfo){
     return $http({
@@ -76,7 +86,6 @@ angular.module("garageApp")
   }
 
   this.getSignOut = function(){
-
   return $http({
     method:"GET",
     url:"/logout"

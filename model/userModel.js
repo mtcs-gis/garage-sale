@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-
 var saleSchema = ('./saleSchema.js')
-
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
+
 
 
 var UserSchema = new mongoose.Schema({
@@ -37,6 +36,8 @@ var UserSchema = new mongoose.Schema({
 	loggedin: {
 		type: Boolean
 	},
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     sale:[saleSchema]
 });
 
