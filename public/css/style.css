@@ -33,7 +33,7 @@ a:hover {
 }
 
 .map {
-  width: 50rem;
+  width: 50%;
   height: 50rem;
   border: 2px solid white;
   border-radius: 2rem;
@@ -81,8 +81,8 @@ a:hover {
 .saleBox {
   width: 15rem;
   height: 15rem;
-  background-color: #000;
-  color: white;
+  background-color: #fff;
+  color: #000;
   margin-top: 1rem;
   border-radius: 2rem;
 }
@@ -96,7 +96,6 @@ a:hover {
   height: auto;
   display: flex;
   justify-content: center;
-  color: white;
 }
 
 h2 {
