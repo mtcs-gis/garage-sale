@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("mainCtrl", function($scope,mainServ){
+angular.module("garageApp").controller("mainCtrl", function($scope, $location, mainServ){
 
 //initializing variables g scope
 
@@ -75,6 +75,37 @@ $scope.saleInfo = [];
 //     console.log(res);
 //   })
 // }
+
+
+  (function (){
+      mainServ.getKnownUser()
+      .then(function(response){
+        var userID = response.data;
+        var user;
+        if (userID.facebook){
+          profileIcon = true;
+          logoutIcon = false;
+        } else if (userID.local) {
+          profileIcon = true;
+          logoutIcon = false;
+        } else {
+          profileIcon = false;
+          logoutIcon = true;
+        }
+          $scope.logOutStuff = logoutIcon;
+          $scope.profileStuff = profileIcon;
+      });
+    })()
+
+  $scope.signOut = function(){
+      console.log("SignOut");
+      mainServ.getSignOut()
+      .then(function(response){
+            $location.path('/');
+      })
+  } 
+
+
 
 
 });

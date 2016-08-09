@@ -86,6 +86,13 @@ li {
     position: fixed;
 }
 
+.profilebtn{
+  top:53px;
+  right: 20px;
+  position: fixed;
+}
+
+
 .profile{
 	text-align: -webkit-left;
 }
