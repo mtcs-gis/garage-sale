@@ -111,7 +111,7 @@ angular.module("garageApp")
       method: 'GET',
       url: '/users'
     }).then(function(res){
-      // console.log(res);
+      console.log(res.data);
       return res.data;
     })
   }

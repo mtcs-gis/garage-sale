@@ -16,10 +16,17 @@ a:hover {
 }
 
 #map {
-  height: 400px;
-  width: 100%;
-  border: 4px solid black;
+  z-index: 3;
 }
+
+.map {
+  width: 50rem;
+  height: 50rem;
+  border: 2px solid black;
+  border-radius: 2rem;
+}
+
+
 
 .login-container {
   width: 35rem;
@@ -33,11 +40,34 @@ a:hover {
   width: 10rem;
   background-color: white;
   border: 2px solid black;
+  margin: 1rem;
+}
+
+#mapButton {
+  width: 20rem;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 .home-container {
   text-align: left;
   height: auto;
+}
+
+.sale-containers {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.saleBox {
+  width: 15rem;
+  height: 15rem;
+  background-color: #000;
+  color: white;
+  margin-top: 1rem;
+  border-radius: 2rem;
 }
 
 
@@ -54,7 +84,7 @@ li {
 	top: 20px;
     right: 20px;
     position: fixed;
-} 
+}
 
 .profile{
 	text-align: -webkit-left;

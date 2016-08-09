@@ -9,8 +9,8 @@ var infoWindow;
 var markerPos;
 var marker;
 
-// var lable = [];
-var results;
+$scope.labels= [];
+
 $scope.count;
 $scope.saleInfo = [];
 
@@ -22,7 +22,7 @@ $scope.saleInfo = [];
   $scope.initMap = function(){
     map = new google.maps.Map(document.getElementById('map'),{
       center: {lat:45.6708, lng: -111.0678},
-      zoom: 13
+      zoom: 11
     });
     $scope.getUserSales();
   }
@@ -38,10 +38,9 @@ $scope.saleInfo = [];
     var infoWindow;
     mainServ.getAllUserSales()
     .then(function(res){
-      //console.log(res[0].sale);
+      console.log(res);
       for(var i = 0; i < res.length; i++){
         for(var j = 0; i < res[i].sale.length; j++){
-          $scope.count = results
           addPos = {
             lng: res[i].sale[j].lat,
             lat: res[i].sale[j].lng
@@ -52,7 +51,6 @@ $scope.saleInfo = [];
         marker = new google.maps.Marker({
           position: addPos,
           map: map,
-          color: "blue",
           animation:google.maps.Animation.DROP,
           label: labels[labelIndex++ % labels.length]
         });
@@ -63,7 +61,7 @@ $scope.saleInfo = [];
       }
     }
     $scope.saleInfo;
-    console.log($scope.saleInfo);
+
   })
 }
 
@@ -77,10 +75,6 @@ $scope.saleInfo = [];
 //     console.log(res);
 //   })
 // }
-
-
-
-
 
 
 });
