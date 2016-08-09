@@ -56,3 +56,5 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
   }
 
   })
+
+});

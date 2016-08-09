@@ -1,4 +1,4 @@
-angular.module('garageApp').controller('loginCtrl', function($scope, $location, mainServ){
+angular.module('garageApp').controller('loginCtrl', function($scope, $location, $window, mainServ){
 
   $scope.loginEmail = "Admin@yahoo";
   $scope.secret = "Admin";
@@ -13,19 +13,16 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
       userName: loginEmail,
       password: secret
     };
-    //console.log("Login");
     mainServ.loginPostLogin(userLogin)
     .then(function(response){
       var verify = response;
-      //console.log(verify.user);
        if (verify.user){
+         $window.location.reload(); //refresh the windows
           $location.path('profile');
           $scope.userLogin = "";
         } else {
           alert("Please Sign up!")
         }
-      //$location.path('profile');
-      //$scope.userLogin = "";
     })
   };
   $scope.forgotPassword = function(lostPassword){
@@ -39,23 +36,20 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     })
   };
   $scope.postSignUp = function(signUpEmail, passWord){
-    // $scope.displayName = signUpEmail;
-    // $scope.welcome = true;
     var userSignUp = {
       userName: signUpEmail,
       password: passWord
     };
-      //console.log("Signup!");
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
       $scope.userSignUp = "";
+      $window.location.reload(); //refresh the windows
       $location.path('profile');
-      //console.log($scope.userSignUp);
     })
   };
 
   $scope.facebooksignup = function(){
-    console.log("You have signed into Facebook like a Champ!");
+    $window.location.reload(); //refresh the windows
   };
 
   (function (){
