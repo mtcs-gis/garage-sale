@@ -1,12 +1,17 @@
 <!-- remember to put ng-init with initMap() here -->
 <div class="container text-center" ng-init="initMap()">
   <br>
-  <div id="map">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="sale-containers">
+        <div class="saleBox" ng-repeat="sale in saleInfo">
+          <h5>{{sale.name}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 map" id="map">
+    </div>
+
   </div>
-  <div>
-    <h1>Results: {{count}}</h1>
-  </div>
-  <div class="container" ng-repeat="sale in saleInfo">
-    {{sale.name}}
-  </div>
+
 </div>
