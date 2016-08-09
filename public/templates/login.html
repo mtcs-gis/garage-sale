@@ -1,28 +1,15 @@
-
-
-<div class="container home-container" ng-controller="loginCtrl">
-
-
-
-
-			<div class="form-group" ng-show="hideStuff">
-				<h2>Login</h2>
-
-				<div class="login-container">
-					<div class="facebook">
-						<a href="/auth/facebook" ng-click="facebooksignup()">with Facebook</a>
-					</div>
-
-				<form  ng-submit="postLogin(loginEmail, secret)">
-					<br>
+<div class="container text-center" ng-controller="loginCtrl">
+			<h2>Login</h2>
+			<a href="/auth/facebook" ng-click="facebooksignup()">with Facebook</a>
+			<div class="form-group login-container" ng-show="hideStuff">
+				<form ng-submit="postLogin(loginEmail, secret)">
 					<input class="form-control" type="email" ng-model="loginEmail" placeholder="Username">
-					<br>
 					<input class="form-control" type="password" ng-model="secret" placeholder="Password">
-					<br>
 					<input class="form-control" placeholder="Login" type="submit">
 				</form>
+			</div>
 
-				<br>
+				<!-- <br>
 				<div class="forgotpassword">
 					<form ng-submit="forgotPassword(lostPassword)">
 					<br>
@@ -30,32 +17,19 @@
 					<input class="form-control" placeholder="Lost Password" type="submit">
 					</form>
 				</div>
-
-
-			</div>
-
-
+			</div> -->
+		<br>
+		<h2>Sign Up</h2>
 		<div class="signup-container" ng-show="hideStuff">
-			<h2>Sign Up</h2>
-
-		  <form ng-submit="postSignUp(signUpEmail, passWord)">
+		  <form ng-submit="postSignUp(signUpEmail, password)">
 				<input class="form-control" type="email" ng-model="signUpEmail" placeholder="Email Address"/>
-				<br>
-				<input class="form-control" type="password" ng-model="passWord" placeholder="Password"/>
-				<br>
+				<input class="form-control" type="password" ng-model="password" placeholder="Password"/>
 			  <input class="form-control" placeholder="Sign UP" type="submit">
 			</form>
 		</div>
 
-		</div>
-
-
-
-
-		<div class="profilepage" ng-show="profilePage">
+		<!-- <div class="profilepage" ng-show="profilePage">
 			<br>
 			<br>
 			<button class="btn" type="button" ui-sref="profile">Click to Continue to Profile Page</button>
-		</div>
-
-</div>
+		</div> -->
