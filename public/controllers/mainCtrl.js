@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("mainCtrl", function($scope, $location, mainServ){
+angular.module("garageApp").controller("mainCtrl", function($scope, $location, $window, mainServ){
 
 //initializing variables g scope
 
@@ -83,17 +83,13 @@ $scope.saleInfo = [];
         var userID = response.data;
         var user;
         if (userID.facebook){
-          profileIcon = true;
-          logoutIcon = false;
-        } else if (userID.local) {
-          profileIcon = true;
-          logoutIcon = false;
-        } else {
-          profileIcon = false;
           logoutIcon = true;
+        } else if (userID.local) {
+          logoutIcon = true;
+        } else {
+          logoutIcon = false;
         }
           $scope.logOutStuff = logoutIcon;
-          $scope.profileStuff = profileIcon;
       });
     })()
 
@@ -101,6 +97,7 @@ $scope.saleInfo = [];
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
+            $window.location.reload(); //refresh the windows
             $location.path('/');
       })
   } 
