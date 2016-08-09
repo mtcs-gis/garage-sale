@@ -4,20 +4,17 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
     $scope.userProfile;// profile page
     $scope.yardData;
 
-    $scope.custom = true;
+
+
+    $scope.custom = false;
        $scope.toggleCustom = function() {
            $scope.custom = $scope.custom === false ? true: false;
-       };
-
-    $scope.custom1 = false;
-       $scope.toggleCustom1 = function() {
-           $scope.custom1 = $scope.custom1 === false ? true: false;
        };
 
     (function (userInfo){
         mainServ.getKnownUser(userInfo)
         .then(function(response){
-      
+
           $scope.userProfile = response.data;
           $scope.yardData = response.data.sale;
 

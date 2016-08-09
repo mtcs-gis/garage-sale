@@ -38,7 +38,7 @@ $scope.saleInfo = [];
     var infoWindow;
     mainServ.getAllUserSales()
     .then(function(res){
-      //console.log(res[0].sale);
+      console.log(res);
       for(var i = 0; i < res.length; i++){
         for(var j = 0; i < res[i].sale.length; j++){
           addPos = {
@@ -51,7 +51,6 @@ $scope.saleInfo = [];
         marker = new google.maps.Marker({
           position: addPos,
           map: map,
-          color: "blue",
           animation:google.maps.Animation.DROP,
           label: labels[labelIndex++ % labels.length]
         });
@@ -76,10 +75,6 @@ $scope.saleInfo = [];
 //     console.log(res);
 //   })
 // }
-
-
-
-
 
 
 });

@@ -26,6 +26,8 @@ a:hover {
   border-radius: 2rem;
 }
 
+
+
 .login-container {
   width: 35rem;
 }
@@ -38,6 +40,13 @@ a:hover {
   width: 10rem;
   background-color: white;
   border: 2px solid black;
+  margin: 1rem;
+}
+
+#mapButton {
+  width: 20rem;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 .home-container {
