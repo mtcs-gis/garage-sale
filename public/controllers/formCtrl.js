@@ -13,8 +13,7 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
         } else if (verify.facebook){
           $scope.userId = response.data._id;
         } else {
-          alert("Please Login To Create Sale");
-          $location.path('/');
+         $location.url('/login');
         }
 
     });
