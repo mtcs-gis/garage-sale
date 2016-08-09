@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var SaleSchema = new mongoose.Schema({
+  _user : { type: String, ref: 'User'},
   name: {type:String},
   address: {type:String},
   lat: {type:Number},

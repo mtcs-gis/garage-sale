@@ -37,7 +37,7 @@ var UserSchema = new mongoose.Schema({
 	loggedin: {
 		type: Boolean
 	},
-    sale:[saleSchema]
+    sale:[{ type: mongoose.Schema.Types.ObjectId, ref:'Sale'}]
 });
 
 UserSchema.methods.generateHash = function(password) {
