@@ -1,32 +1,33 @@
-<div class="container">
+<div class="container text-center">
 
 	<div class="">
-		<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.firstName}}</h3>
-		<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.middleName}}</h3>
-		<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.familyName}}</h3>
-		<button class="btn btn-success" ng-click="toggleCustom()">Update Profile</button>
-			<form class="form-group" ng-show="custom" ng-submit="updateUser(userProfile); changer=false">
+		<div class="user-info-container">
+			<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.firstName}}</h3>
+			<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.middleName}}</h3>
+			<h3 ng-hide="changer" ng-dblclick="changer=true">{{userProfile.familyName}}</h3>
+		</div>
+			<form class="form-group create-container" ng-show="custom" ng-submit="updateUser(userProfile); changer=false">
 				<br>
-				<input class="form-control" placeholder="First Name" type="text" ng-model="userProfile.firstName">
+				<input class="form-control create-container" placeholder="First Name" type="text" ng-model="userProfile.firstName">
 				<br>
-				<input class="form-control" placeholder="Middle Name" type="text" ng-model="userProfile.middleName">
+				<input class="form-control create-container" placeholder="Middle Name" type="text" ng-model="userProfile.middleName">
 				<br>
-				<input class="form-control" placeholder="Last Name" type="text" ng-model="userProfile.familyName">
+				<input class="form-control create-container" placeholder="Last Name" type="text" ng-model="userProfile.familyName">
 				<br>
-				<button class="form-control" type="submit">Up-Date Information</button>
-			</form>
+			<!-- </form> -->
+			<button class="btn btn-success" ng-click="toggleCustom()" ng-click="updateUser(userProfile); changer=false">Update Profile</button>
 	</div>
 
 
 
 	<div class="userYardSale">
 		<form ng-repeat="stuff in yardData" ng-submit="deleteSale(stuff)">
-			<h3>{{stuff.name}}</hr>
-		    <h3>{{stuff.startDate}}</hr>
-		    <h3>{{stuff.endDate}}</hr>
-		    <h3>{{stuff.address}}</hr>
-		    <h3>{{stuff.date}}</hr>
-		    <h3>{{stuff.comment}}</hr>
+			<h3 class="stuff-title">{{stuff.name}}</h3>
+		    <h3 class="stuff-title">{{stuff.startDate}}</h3>
+		    <h3 class="stuff-title">{{stuff.endDate}}</h3>
+		    <h3 class="stuff-title">{{stuff.address}}</h3>
+		    <h3 class="stuff-title">{{stuff.date}}</h3>
+		    <h3 class="stuff-title">{{stuff.comment}}</h3>
 		    <button class="btn btn-primary"type="submit">Delete Sale</button>
 		</form>
 	</div>

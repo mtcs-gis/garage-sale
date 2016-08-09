@@ -19,7 +19,7 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
       //console.log(response);
       var verify = response.data;
      // console.log($scope.userId);
-     if (verify.local){    
+     if (verify.local){
           $scope.userId = response.data._id;
         } else if (verify.facebook){
           $scope.userId = response.data._id;
@@ -56,3 +56,5 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
   }
 
   })
+
+});

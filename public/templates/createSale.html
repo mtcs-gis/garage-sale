@@ -1,20 +1,21 @@
 
-<div class="container">
-    <div class="form-group create-container">
-      <h2>Create Sale</h2>
-        <input class="form-control" placeholder="Title" ng-model="sale.name">
-        <br>
-        <input class="form-control" type="date" placeholder="Date" ng-model="sale.startDate">
-        <br>
-        <input class="form-control" type="date" placeholder="End Date" ng-model="sale.endDate">
-        <br>
-        <input class="form-control" placeholder="Address" ng-model="sale.address">
-        <br>
-        <input class="form-control" type="date" placeholder="Date" ng-model="sale.date">
-        <br>
-        <textarea class="form-control" placeholder="Comments" ng-model="sale.comment" rows="8" cols="40"></textarea>
-        <br>
-
-    </div>
-    <button class="btn-success" type="button" ng-click="postSale(sale)">Click</button>
+<div class="container text-center">
+  <h2 id="create-title">Create Sale</h2>
+  <div class="form-group create-container">
+    <input class="form-control create-container" placeholder="Title" ng-model="sale.name">
+    <br>
+    <input class="form-control create-container" type="date" placeholder="Date" ng-model="sale.startDate">
+    <br>
+    <input class="form-control create-container" type="date" placeholder="End Date" ng-model="sale.endDate">
+    <br>
+    <input class="form-control create-container" placeholder="Address" ng-model="sale.address">
+    <br>
+    <input class="form-control create-container" type="date" placeholder="Date" ng-model="sale.date">
+    <br>
+    <br>
+</div>
+  <div class="add-container">
+    <textarea class="form-control create-container" placeholder="Additional Information" ng-model="sale.comment" rows="4" cols="10"></textarea>
+  </div>
+  <button class="btn-success" id="addButton" type="button" ng-click="postSale(sale)">Add Sale</button>
 </div>
