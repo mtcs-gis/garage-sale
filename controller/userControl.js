@@ -116,16 +116,19 @@ module.exports = {
 
 	},
 	addSale: function(req, res){
-		console.log(req.body);
+		console.log(req);
 		UserModel.findByIdAndUpdate(
-			req.body._user,
-			{$push: {"sale":req.body._id}},
+			req._user,
+			{$push: {"sale":req._id}},
 			{safe: true, upsert: true},
 			function(err, model){
 				if(err) console.log(err);
 				res.send(model);
 			}
 		)
+	},
+	addSal: function(req, res){
+		console.log(req);
 	},
 	updateSale: function(req, res){
 		console.log(req.body);

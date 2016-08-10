@@ -8,8 +8,8 @@ module.exports = {
         res.send(err);
       }
       console.log(result);
-      //next(result);
-      res.send(result);
+      next(result);
+      //res.send(result);
     });
   },
   read: function(req, res){
