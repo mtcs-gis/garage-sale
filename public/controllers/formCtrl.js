@@ -32,9 +32,10 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
     geocoder.geocode(addObj, function(results, status){
        var temp = results[0].geometry.viewport;
+       sale._user = $scope.userId;
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
-       mainServ.postSale($scope.userId, sale)
+       mainServ.postSale(sale)
        $scope.addButton = "Added";
        console.log(sale);
 

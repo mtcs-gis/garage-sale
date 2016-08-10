@@ -128,11 +128,11 @@ angular.module("garageApp")
   //   })
   // }
 
-  this.postSale = function(id, sale){
+  this.postSale = function(sale){
       console.log(sale);
     return $http({
       method: 'POST',
-      url: '/sale/' + id,
+      url: '/sale'
       data: sale
     }).then(function(res){
       console.log(res.data);
