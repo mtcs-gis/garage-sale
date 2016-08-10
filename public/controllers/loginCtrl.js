@@ -1,11 +1,10 @@
-angular.module('garageApp')
-.controller('loginCtrl', function($scope, $location, mainServ){
+angular.module('garageApp').controller('loginCtrl', function($scope, $location, mainServ){
 
-  // $scope.verify;
-  $scope.loginSuccess = false;
+  $scope.wrongCred = true;
+  $scope.userName;
 
 
-  $scope.postLogin = function(loginEmail, secret){ 
+  $scope.postLogin = function(loginEmail, secret){
     var userLogin = {
       userName: loginEmail,
       password: secret
@@ -17,8 +16,7 @@ angular.module('garageApp')
           $location.path('map');
           $scope.userLogin = "";
         } else {
-          $location.path('/');
-          $scope.loginSucces = false;
+          $scope.wrongCred = false;
         }
     })
   };
@@ -39,42 +37,10 @@ angular.module('garageApp')
     };
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
-      $scope.userSignUp = "";
+          console.log(response.user.local.userName)
       $location.path('map');
     })
   };
-
-  // $scope.facebooksignup = function(){
-    
-  // };
-
-  // (function (){
-  //     mainServ.getKnownUser()
-  //     .then(function(response){
-  //       //console.log(response);
-  //       $scope.verify = response.data;
-  //       //console.log($scope.verify);
-  //       var userID = response.data;
-  //       var user;
-  //       if (userID.facebook){
-  //         button = true;
-  //         icons = false;
-  //       } else {
-  //         button = false;
-  //         icons = true;
-  //       }
-  //         $scope.hideStuff = icons;
-  //         $scope.profilePage = button;
-  //     });
-  //   })()
-
-
-
-
-
-
-
-
 
 
 

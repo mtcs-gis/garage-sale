@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("mainCtrl", function($scope, mainServ){
+angular.module("garageApp").controller("mainCtrl", function($scope, $location, mainServ){
 
 //initializing variables g scope
 
@@ -9,6 +9,7 @@ var infoWindow;
 var markerPos;
 var marker;
 
+$scope.userName;
 $scope.landingPage = true;
 $scope.mapPage = true;
 
@@ -18,12 +19,15 @@ $scope.count;
 $scope.saleInfo = [];
 
 
-  $scope.enterMapPage = function(){
-    $scope.mapPage = false;
-    $scope.landingPage=false;
-  };
+  // $scope.enterMapPage = function(){
+  //   $scope.mapPage = false;
+  //   $scope.landingPage=false;
+  // };
 
 
+  $scope.getUsername = function(name){
+    $scope.userName = name;
+  }
 
 
 // creating initmap to get the map started
@@ -106,7 +110,7 @@ $scope.saleInfo = [];
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
-            $location.path('/');
+      $location.path('/');
       })
   }
 

@@ -35,6 +35,7 @@ angular.module("garageApp")
       return res;
     })
   }
+
   this.deleteSaleStuff = function(user){
     return $http({
       method:"GET",
@@ -126,7 +127,7 @@ angular.module("garageApp")
     })
   }
 
-  this.postSale = function(id, sale){
+  this.postSale = function(sale){
       console.log(sale);
     return $http({
       method: 'POST',

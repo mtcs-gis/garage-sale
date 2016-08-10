@@ -1,4 +1,4 @@
-var UserModel = require('./../model/userModel'); 
+var UserModel = require('./../model/userModel');
 var passport = require('passport'); //passort
 var LocalStrategy = require('passport-local').Strategy; //passport
 var FacebookStrategy = require('passport-facebook').Strategy; //passport
@@ -87,7 +87,7 @@ module.exports = {
 	},
 
 	getAllUsers: function(req, res){
-		UserModel.find().exec(function(err, result){
+		UserModel.find().populate('sale').exec(function(err, result){
 			if(err){
 				res.send(err);
 			}else{
@@ -96,11 +96,11 @@ module.exports = {
 		})
 	},
 	getOneUser: function(req, res){
-		if(req.user) {
+		if(true) {
 			console.log(req.user)
-			UserModel.findById({
-				_id: req.user._id
-			},
+			UserModel.findById({ _id: req.params.id })
+			.populate('sale')
+			.exec(
 			function (err, user ){
 				if(err){
 					return console.log(err);
@@ -118,8 +118,8 @@ module.exports = {
 	addSale: function(req, res){
 		console.log(req.body);
 		UserModel.findByIdAndUpdate(
-			req.params.id,
-			{$push: {"sale":req.body}},
+			req.body._user,
+			{$push: {"sale":req.body._id}},
 			{safe: true, upsert: true},
 			function(err, model){
 				if(err) console.log(err);
@@ -195,6 +195,6 @@ module.exports = {
 		}
 
 
-		
+
 
 }

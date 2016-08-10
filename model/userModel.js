@@ -1,10 +1,12 @@
-var mongoose = require('mongoose');
-var saleSchema = ('./saleSchema.js')
+var mongoose = require('mongoose'),
+		Schema = mongoose.Schema;
+
+//var Sales = ('./saleModel.js')
+
 var bcrypt = require('bcrypt-nodejs'); //encrypts the password
 
 
-
-var UserSchema = new mongoose.Schema({
+var UserSchema = new Schema({
 
 	local: {
 		userName: {type: String, unique: true},
@@ -15,7 +17,7 @@ var UserSchema = new mongoose.Schema({
     familyName: String,
     profilePic: String,
     homeAddress: String,
-	facebook: {
+		facebook: {
         id         : String,
         token      : String,
         emails     : String,
@@ -25,7 +27,7 @@ var UserSchema = new mongoose.Schema({
         gender     : String,
         bio        : String,
         interests: [{
-            type: mongoose.Schema.Types.ObjectId, ref: 'Category'
+            type: Schema.Types.ObjectId, ref: 'Category'
         }],
     },
 	role: {
@@ -36,9 +38,7 @@ var UserSchema = new mongoose.Schema({
 	loggedin: {
 		type: Boolean
 	},
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
-    sale:[saleSchema]
+    sale:[{type: Schema.Types.ObjectId, ref: 'Sale'}]
 });
 
 UserSchema.methods.generateHash = function(password) {
