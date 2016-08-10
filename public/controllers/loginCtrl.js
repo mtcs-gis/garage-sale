@@ -1,11 +1,8 @@
-angular.module('garageApp').controller('loginCtrl', function($scope, $location, $window, mainServ){
+angular.module('garageApp')
+.controller('loginCtrl', function($scope, $location, mainServ){
 
-  $scope.loginEmail = "Admin@yahoo";
-  $scope.secret = "Admin";
-  $scope.signUpEmail = "Admin@yahoo";
-  $scope.passWord = "Admin";
-  $scope.verify;
-  
+  // $scope.verify;
+  $scope.loginSuccess = false;
 
 
   $scope.postLogin = function(loginEmail, secret){ 
@@ -17,11 +14,11 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     .then(function(response){
       var verify = response;
        if (verify.user){
-         $window.location.reload(); //refresh the windows
-          $location.path('profile');
+          $location.path('map');
           $scope.userLogin = "";
         } else {
-          alert("Please Sign up!")
+          $location.path('/');
+          $scope.loginSucces = false;
         }
     })
   };
@@ -43,34 +40,33 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
       $scope.userSignUp = "";
-      $window.location.reload(); //refresh the windows
-      $location.path('profile');
+      $location.path('map');
     })
   };
 
-  $scope.facebooksignup = function(){
-    $window.location.reload(); //refresh the windows
-  };
+  // $scope.facebooksignup = function(){
+    
+  // };
 
-  (function (){
-      mainServ.getKnownUser()
-      .then(function(response){
-        //console.log(response);
-        $scope.verify = response.data;
-        //console.log($scope.verify);
-        var userID = response.data;
-        var user;
-        if (userID.facebook){
-          button = true;
-          icons = false;
-        } else {
-          button = false;
-          icons = true;
-        }
-          $scope.hideStuff = icons;
-          $scope.profilePage = button;
-      });
-    })()
+  // (function (){
+  //     mainServ.getKnownUser()
+  //     .then(function(response){
+  //       //console.log(response);
+  //       $scope.verify = response.data;
+  //       //console.log($scope.verify);
+  //       var userID = response.data;
+  //       var user;
+  //       if (userID.facebook){
+  //         button = true;
+  //         icons = false;
+  //       } else {
+  //         button = false;
+  //         icons = true;
+  //       }
+  //         $scope.hideStuff = icons;
+  //         $scope.profilePage = button;
+  //     });
+  //   })()
 
 
 

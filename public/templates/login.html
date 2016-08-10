@@ -1,10 +1,11 @@
 <div class="">
 		<h2>Login</h2>
-		<form ng-submit="postLogin(loginEmail, secret)">
+		<form ng-submit="postLogin(loginEmail, secret)" ng-controller="loginCtrl">
 			<input class="form-control" type="email" ng-model="loginEmail" placeholder="Username">
 			<input class="form-control" type="password" ng-model="secret" placeholder="Password">
 			<button class="btn btn-warning" id="login" type="submit" name="button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 		</form>
+		<h4 ng-controller="loginCtrl" ng-hide=loginSucces>Invalided</h4>
 </div>
 
 <!-- <a href="/auth/facebook" ng-click="facebooksignup()">with Facebook</a> -->
@@ -21,8 +22,4 @@
 		<!-- <br>
 		 -->
 
-		<!-- <div class="profilepage" ng-show="profilePage">
-			<br>
-			<br>
-			<button class="btn" type="button" ui-sref="profile">Click to Continue to Profile Page</button>
-		</div> -->
+		

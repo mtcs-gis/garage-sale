@@ -86,7 +86,7 @@ $scope.saleInfo = [];
 // }
 
 
-  (function (){
+  (function (){                   //self-invoking function that responses to whether a user is log in or not
       mainServ.getKnownUser()
       .then(function(response){
         var userID = response.data;
@@ -102,11 +102,10 @@ $scope.saleInfo = [];
       });
     })()
 
-  $scope.signOut = function(){
+  $scope.signOut = function(){   //logs a you out and redirects them to the home page
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
-            // $window.location.reload(); //refresh the windows
             $location.path('/');
       })
   }
