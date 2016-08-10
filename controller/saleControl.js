@@ -1,13 +1,15 @@
 var saleModel = require('./../model/saleModel.js');
-
+var userControl = require('./userControl');
 module.exports = {
-  create: function(req, res){
+  create: function(req, res, next){
     var sale = new saleModel(req.body);
     sale.save(function(err, result){
       if(err){
         res.send(err);
       }
-      res.send(result)
+      console.log(result);
+      next(result);
+      res.send(result);
     });
   },
   read: function(req, res){

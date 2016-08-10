@@ -51,7 +51,7 @@ app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
 app.post('/sale/:id', userControl.addSale);
 // app.put('/sale/:id', userControl.updateSale);
-app.post('/sale', saleControl.create );
+app.post('/sale', saleControl.create, userControl.addSale );
 app.get('/sale', saleControl.read);
 app.get('/sale/:id', saleControl.readById);
 app.put('/sale/:id', saleControl.update );
