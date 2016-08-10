@@ -20,10 +20,19 @@ angular.module("garageApp").directive("loginDirective", function(){
 
 })
 
-.directive("enterDirective", function(){
+// .directive("enterDirective", function(){
+//
+//   return {
+//     templateUrl: './../templates/enter.html',
+//     restrict: "E"
+//   }
+//
+// })
+
+.directive("createSaleDirective", function(){
 
   return {
-    templateUrl: './../templates/enter.html',
+    templateUrl: './../templates/createSale.html',
     restrict: "E"
   }
 
