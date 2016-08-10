@@ -4,6 +4,18 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var config = require('./config.js');
+var nodemailer = require('nodemailer'); //password reset
+var sgTransport = require('nodemailer-sendgrid-transport'); //password reset
+var sendgrid  = require('sendgrid'); //password reset
+var User = require('./model/userModel'); // password reset
+var engine = require('consolidate');
+
+var options = {
+	auth: {
+
+	}
+};
+var mailer = nodemailer.createTransport(sgTransport(options));
 
 var passport = require('passport');
 
@@ -51,7 +63,7 @@ app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
 app.post('/sale/:id', userControl.addSale);
 // app.put('/sale/:id', userControl.updateSale);
-app.post('/sale', saleControl.create, userControl.addSale );
+app.post('/sale', saleControl.create );
 app.get('/sale', saleControl.read);
 app.get('/sale/:id', saleControl.readById);
 app.put('/sale/:id', saleControl.update );

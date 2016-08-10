@@ -8,7 +8,7 @@ module.exports = {
         res.send(err);
       }
       console.log(result);
-      next(result);
+      //next(result);
       res.send(result);
     });
   },
