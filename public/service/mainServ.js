@@ -35,6 +35,7 @@ angular.module("garageApp")
       return res;
     })
   }
+
   this.deleteSaleStuff = function(user){
     return $http({
       method:"GET",
