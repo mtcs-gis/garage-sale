@@ -10,20 +10,21 @@
   <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body ng-controller="mainCtrl" ng-init="initMap()">
-  <div class="container link-container">
 
-    <h1 id="title">Yard Sailrs</h1>
-    <button class="btn link-buttons" id="mapButton" type="button" ui-sref="map">Map</button>
-    <br>
-    <button class="btn link-buttons" id="mapButton" type="button" ui-sref="createSale">Create Sale</button>
-    <hr>
-  </div>
-  <div ng-show="logOutStuff" class="logout">
-    <form ng-submit="signOut()">
-      <button class="btn btn-success" id="accountButton" type="button" ui-sref="profile">Profile</button>
-      <button class="btn btn-primary" id="accountButton" type="submit">Logout</button>
-    </form>
-  </div>
+
+
+
+
+
+  <!-- <div class="main-container" ng-hide=mapPage>
+    <div class="container link-container">
+      <h1 id="title">Yard Sailrs</h1>
+      <button class="btn link-buttons" id="mapButton" type="button" ui-sref="map">Map</button>
+      <br>
+      <button class="btn link-buttons" id="mapButton" type="button" ui-sref="createSale">Create Sale</button>
+      <hr>
+    </div>
+  </div> -->
 
   <ui-view></ui-view>
 
@@ -38,10 +39,6 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQIQfoxusHRYS1sqnfW_6FrS5-NVdbNWc"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 <script src="./js/app.js" charset="utf-8"></script>
 <script src="./controllers/mainCtrl.js" charset="utf-8"></script>
 <script src="./controllers/mapCtrl.js" charset="utf-8"></script>
@@ -49,5 +46,6 @@
 <script src="./controllers/loginCtrl.js" charset="utf-8"></script>
 <script src="./controllers/profileCtrl.js" charset="utf-8"></script>
 <script src="./service/mainServ.js" charset="utf-8"></script>
+<script src="./directives/loginDirective.js" charset="utf-8"></script>
 </body>
 </html>

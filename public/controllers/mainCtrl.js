@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("mainCtrl", function($scope, $location, $window, mainServ){
+angular.module("garageApp").controller("mainCtrl", function($scope, mainServ){
 
 //initializing variables g scope
 
@@ -9,10 +9,19 @@ var infoWindow;
 var markerPos;
 var marker;
 
+$scope.landingPage = true;
+$scope.mapPage = true;
+
 $scope.labels= [];
 
 $scope.count;
 $scope.saleInfo = [];
+
+
+  $scope.enterMapPage = function(){
+    $scope.mapPage = false;
+    $scope.landingPage=false;
+  };
 
 
 
@@ -97,10 +106,10 @@ $scope.saleInfo = [];
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
-            $window.location.reload(); //refresh the windows
+            // $window.location.reload(); //refresh the windows
             $location.path('/');
       })
-  } 
+  }
 
 
 
