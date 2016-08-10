@@ -132,7 +132,7 @@ angular.module("garageApp")
       console.log(sale);
     return $http({
       method: 'POST',
-      url: '/sale'
+      url: '/sale',
       data: sale
     }).then(function(res){
       console.log(res.data);

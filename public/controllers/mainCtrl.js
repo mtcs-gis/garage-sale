@@ -90,21 +90,21 @@ $scope.saleInfo = [];
 // }
 
 
-  (function (){
-      mainServ.getKnownUser()
-      .then(function(response){
-        var userID = response.data;
-        var user;
-        if (userID.facebook){
-          logoutIcon = true;
-        } else if (userID.local) {
-          logoutIcon = true;
-        } else {
-          logoutIcon = false;
-        }
-          $scope.logOutStuff = logoutIcon;
-      });
-    })()
+  // (function (){
+  //     mainServ.getKnownUser()
+  //     .then(function(response){
+  //       var userID = response.data;
+  //       var user;
+  //       if (userID.facebook){
+  //         logoutIcon = true;
+  //       } else if (userID.local) {
+  //         logoutIcon = true;
+  //       } else {
+  //         logoutIcon = false;
+  //       }
+  //         $scope.logOutStuff = logoutIcon;
+  //     });
+  //   })()
 
   $scope.signOut = function(){
       console.log("SignOut");
@@ -113,8 +113,5 @@ $scope.saleInfo = [];
       $location.path('/');
       })
   }
-
-
-
 
 });
