@@ -3,6 +3,10 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
 
 
   $stateProvider
+  .state("landingPage", {
+    url: "/landingPage",
+    templateUrl: "./../templates/landingPage.html"
+  })
   .state("login", {
     url:"/login",
     templateUrl: "./../templates/login.html",
@@ -14,7 +18,7 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
     controller: "profileCtrl"
   })
   .state("map", {
-    url:"/",
+    url:"/map",
     templateUrl: "./../templates/map.html",
     controller: "mainCtrl"
   })
@@ -35,7 +39,7 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
   })
 
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/landingPage");
 
 
 });
