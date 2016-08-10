@@ -1,14 +1,11 @@
-angular.module('garageApp').controller('loginCtrl', function($scope, $location, $window, mainServ){
-
-  $scope.loginEmail = "Admin@yahoo";
-  $scope.secret = "Admin";
-  $scope.signUpEmail = "Admin@yahoo";
-  $scope.passWord = "Admin";
-  $scope.verify;
-  
+angular.module('garageApp').controller('loginCtrl', function($scope, $location, mainServ){
 
 
-  $scope.postLogin = function(loginEmail, secret){ 
+  $scope.wrongCred = true;
+  $scope.userName;
+
+
+  $scope.postLogin = function(loginEmail, secret){
     var userLogin = {
       userName: loginEmail,
       password: secret
@@ -17,11 +14,10 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     .then(function(response){
       var verify = response;
        if (verify.user){
-         $window.location.reload(); //refresh the windows
-          $location.path('profile');
+          $location.path('map');
           $scope.userLogin = "";
         } else {
-          alert("Please Sign up!")
+          $scope.wrongCred = false;
         }
     })
   };
@@ -42,35 +38,14 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     };
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
-      $scope.userSignUp = "";
-      $window.location.reload(); //refresh the windows
-      $location.path('profile');
+      console.log(response.user.local.userName)
+      $location.path('map');
     })
   };
 
-  $scope.facebooksignup = function(){
-    $window.location.reload(); //refresh the windows
-  };
-
-  (function (){
-      mainServ.getKnownUser()
-      .then(function(response){
-        //console.log(response);
-        $scope.verify = response.data;
-        //console.log($scope.verify);
-        var userID = response.data;
-        var user;
-        if (userID.facebook){
-          button = true;
-          icons = false;
-        } else {
-          button = false;
-          icons = true;
-        }
-          $scope.hideStuff = icons;
-          $scope.profilePage = button;
-      });
-    })()
+  // $scope.facebooksignup = function(){
+  //   $window.location.reload(); //refresh the windows
+  // };
 
 
 

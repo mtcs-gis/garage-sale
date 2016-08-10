@@ -17,5 +17,7 @@
   <div class="add-container">
     <textarea class="form-control create-container" placeholder="Additional Information" ng-model="sale.comment" rows="4" cols="10"></textarea>
   </div>
-  <button class="btn-success" id="addButton" type="button" ng-click="postSale(sale)">Add Sale</button>
+  <button class="btn btn-success" id="addButton" type="button" ng-click="postSale(sale)">{{addButton}}</button>
+  <button class="btn btn-primary" id="addButton" type="button" ui-sref="map">To Map</button>
+
 </div>

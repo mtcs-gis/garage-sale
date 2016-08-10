@@ -1,9 +1,12 @@
 <!-- remember to put ng-init with initMap() here -->
 <div class="container text-center" ng-init="initMap()">
   <br>
+  <div class="text-right">
+    <button class="btn btn-primary" ng-click="signOut()">Logout</button>
+  </div>
+  <br>
   <div class="">
-    <button class="btn btn-warning" id="enterButton" ui-sref="landingPage">Home</button>
-    <button name="button" ng-hide=true>Add Sale</button>
+    <button class="btn btn-warning" id="enterButton" ui-sref="createSale">Create Sale</button>
     <br>
     <cite>Please Login to Post a Sale</cite>
   </div>

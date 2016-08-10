@@ -1,6 +1,9 @@
 angular.module("garageApp").controller("formCtrl", function($scope, $location, mainServ){
 
   $scope.userId;
+  $scope.success;
+  $scope.addButton = "Add Sale";
+
 
   (function (userInfo){
     mainServ.getKnownUser(userInfo)
@@ -8,12 +11,10 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
       //console.log(response);
       var verify = response.data;
      // console.log($scope.userId);
-     if (verify.local){    
+     if (verify.local){
           $scope.userId = response.data._id;
         } else if (verify.facebook){
           $scope.userId = response.data._id;
-        } else {
-         $location.url('/login');
         }
 
     });
@@ -34,7 +35,10 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
        mainServ.postSale($scope.userId, sale)
+       $scope.addButton = "Added";
        console.log(sale);
+
+
        // .then(function(response){
        //  console.log(response);
        //    //$scope.getUserID(); //updates the list!
