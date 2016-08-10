@@ -87,7 +87,7 @@ module.exports = {
 	},
 
 	getAllUsers: function(req, res){
-		UserModel.find().exec(function(err, result){
+		UserModel.find().populate('sale').exec(function(err, result){
 			if(err){
 				res.send(err);
 			}else{
@@ -96,9 +96,9 @@ module.exports = {
 		})
 	},
 	getOneUser: function(req, res){
-		if(req.user) {
+		if(true) {
 			console.log(req.user)
-			UserModel.findById({ _id: req.user._id })
+			UserModel.findById({ _id: req.params.id })
 			.populate('sale')
 			.exec(
 			function (err, user ){
