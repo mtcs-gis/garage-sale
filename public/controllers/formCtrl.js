@@ -1,16 +1,5 @@
 angular.module("garageApp" ).controller("formCtrl", function($scope, $location, mainServ){
 
-
-
-
-
-
-
-
-
-
-
-
   $scope.userId;
   $scope.success;
   $scope.addButton = "Add Sale";
