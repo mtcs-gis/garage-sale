@@ -116,10 +116,10 @@ module.exports = {
 
 	},
 	addSale: function(req, res){
-		console.log(req);
+		console.log(req.id);
 		UserModel.findByIdAndUpdate(
-			req._user,
-			{$push: {"sale":req._id}},
+			req.body._user,
+			{$push: {"sale":req.id}},
 			{safe: true, upsert: true},
 			function(err, model){
 				if(err) console.log(err);
@@ -128,7 +128,11 @@ module.exports = {
 		)
 	},
 	addSal: function(req, res){
-		console.log(req);
+		console.log(req.body);
+
+		UserModel.findById(req._user), function(err, result){
+			res.send("sploop");
+		}
 	},
 	updateSale: function(req, res){
 		console.log(req.body);
