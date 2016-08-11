@@ -1,16 +1,5 @@
 angular.module("garageApp" ).controller("formCtrl", function($scope, $location, mainServ){
 
-//,['ui.bootstrap']
-function(){
-  var vm = this;
-  
-  vm.valuationDate = new Date();
-  vm.valuationDatePickerIsOpen = false;
-  
-  vm.valuationDatePickerOpen = function () {
-
-      this.valuationDatePickerIsOpen = true;
-  };
 
 
 
@@ -28,6 +17,7 @@ function(){
 
 
   (function (userInfo){
+    console.log(userInfo)
     mainServ.getKnownUser(userInfo)
     .then(function(response){
       //console.log(response);
@@ -48,7 +38,7 @@ function(){
 
 
   $scope.postSale = function(sale){
-    
+
     var addObj = {address:sale.address + "Bozeman"
     };
     console.log(addObj);

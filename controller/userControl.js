@@ -10,7 +10,7 @@ var sgTransport = require('nodemailer-sendgrid-transport');
 var sendgrid  = require('sendgrid');
 var options = {
 	auth: {
-		api_key: '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'
+		api_key: ''
 	}
 };
 var mailer = nodemailer.createTransport(sgTransport(options));
@@ -126,6 +126,9 @@ module.exports = {
 				res.send(model);
 			}
 		)
+	},
+	getUser: function(req, res){
+		res.send(req.user);
 	},
 	deleteSale: function(req, res){
 		console.log()
