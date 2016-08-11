@@ -101,7 +101,7 @@ angular.module("garageApp")
       method: 'GET',
       url: '/sales'
     }).then(function(res){
-      console.log(res.data);
+
       return res.data;
     })
   }
@@ -124,6 +124,17 @@ angular.module("garageApp")
       return res.data;
     });
   };
+
+  this.getMySales = function(){
+    return $http({
+      method: 'GET',
+      url: '/mysales'
+    }).then(function(res){
+      return res.data;
+    })
+  }
+
+
   // this.updateSale = function(sale){
   //   return $http({
   //     method: 'PUT',

@@ -3,7 +3,7 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
   $scope.userId;
   $scope.success;
   $scope.addButton = "Add Sale";
-
+  $scope.mySales;
 
   (function (userInfo){
     console.log(userInfo)
@@ -28,7 +28,7 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
 
   $scope.postSale = function(sale){
 
-    var addObj = {address:sale.address + "Bozeman"
+    var addObj = {address:sale.address + " Bozeman"
     };
     console.log(addObj);
 
@@ -47,6 +47,13 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
        //  console.log(response);
        //    //$scope.getUserID(); //updates the list!
        //  });
+    })
+    $scope.getMySales();
+  }
+  $scope.getMySales = function(){
+    mainServ.getMySales()
+    .then(function(response){
+      $scope.mySales = response;
     })
   }
 

@@ -68,6 +68,7 @@ app.post('/sale/:id', userControl.addSale);
 app.post('/sale', saleControl.create, userControl.addSale );
 app.get('/sale', saleControl.read);
 app.get('/sale/:id', saleControl.readById);
+app.get('/mysales', saleControl.readByUser);
 app.put('/sale/:id', saleControl.update );
 app.delete('/sale/:id', saleControl.delete, userControl.deleteSale);
 

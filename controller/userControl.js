@@ -25,6 +25,7 @@ module.exports = {
 			if(!user) { return res.json({ message: "Please enter your Email & Password "}) } //{ return res.status(404).json(info.message) }
 			req.login(user, function(err){
 				if(err) { return next(err); }
+				console.log(req.user);
 				return res.json({ message: 'You logged in like a champ!', user: user });
 			});
 		})(req, res, next);
@@ -116,7 +117,7 @@ module.exports = {
 	addSale: function(req, res){
 		console.log(req.id);
 		UserModel.findByIdAndUpdate(
-			req.body._user,
+			req.user._id,
 			{$push: {"sale":req.id}},
 			{safe: true, upsert: true},
 			function(err, model){
