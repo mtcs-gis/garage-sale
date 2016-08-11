@@ -10,6 +10,8 @@ module.exports = {
       //add sale id to req
       req.id = result._id;
       //call userControl.addSale
+
+      console.log(req.user);
       next();
 
     });
@@ -30,6 +32,15 @@ module.exports = {
         res.send(err)
       }
       res.send(result)
+    })
+  },
+  readByUser: function(req, res){
+    saleModel.find({_user:req.user._id}).exec(function(err, result){
+      if(err){
+        res.send(err)
+      } else {
+        res.send(result);
+      }
     })
   },
   update: function(req, res){
