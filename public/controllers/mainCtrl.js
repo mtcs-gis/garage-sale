@@ -8,9 +8,7 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
   var infoWindow;
   var markerPos;
   var marker;
-
-
-
+  var infoWindow;
 
   $scope.names = {};
 
@@ -38,34 +36,42 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
 // beginning of getSales
 
 
+// get sales function that loops through all sales
 
 $scope.getSales = function(){
+  var content;
+  var date;
   mainServ.getAllSales()
   .then(function(response){
+    var markerlist = [];
     for(var i = 0; i < response.length; i++){
 
-      $scope.names= response;
+      content = response[i];
+      date = response[i].date.slice(0,10);
+      time = response[i].time;
+      $scope.names= response[i];
 
       addPos = {
         lng: response[i].lat,
         lat: response[i].lng
       }
 
-      // circle = new google.maps.Circle({
-      //   strokeColor: 'rgb(198, 86, 61)',
-      //   strokeOpacity: 0.8,
-      //   strokeWeight: 1,
-      //   fillColor: 'rgb(198, 86, 61)',
-      //   fillOpacity: 0.35,
-      //   map: map,
-      //   center: addPos,
-      //   radius: 200
-      // })
+      infowindow = new google.maps.InfoWindow({
+        content: content.name.toUpperCase() + "<br>" + content.address.toUpperCase() + "<br>" + date
+      })
+
       marker = new google.maps.Marker({
         position: addPos,
         map: map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        infowindow: infowindow
       })
+
+
+      marker.addListener('click', function(){
+        this.infowindow.open(map,this);
+      })
+
     }
   })
 }
@@ -82,21 +88,22 @@ $scope.getSales = function(){
 //   })
 // }
 
-  (function (){                   //self-invoking function that responses to whether a user is log in or not
-      mainServ.getKnownUser()
-      .then(function(response){
-        var userID = response.data;
-        var user;
-        if (userID.facebook){
-          logoutIcon = true;
-        } else if (userID.local) {
-          logoutIcon = true;
-        } else {
-          logoutIcon = false;
-        }
-          $scope.logOutStuff = logoutIcon;
-      });
-    })()
+
+  // (function (){                   //self-invoking function that responses to whether a user is log in or not
+  //     mainServ.getKnownUser()
+  //     .then(function(response){
+  //       var userID = response.data;
+  //       var user;
+  //       if (userID.facebook){
+  //         logoutIcon = true;
+  //       } else if (userID.local) {
+  //         logoutIcon = true;
+  //       } else {
+  //         logoutIcon = false;
+  //       }
+  //         $scope.logOutStuff = logoutIcon;
+  //     });
+  //   })()
 
   $scope.signOut = function(){   //logs a you out and redirects them to the home page
       console.log("SignOut");

@@ -30,6 +30,7 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
 
     var addObj = {address:sale.address + " Bozeman"
     };
+    
     console.log(addObj);
 
     geocoder.geocode(addObj, function(results, status){
@@ -39,14 +40,7 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
        mainServ.postSale(sale)
-       $scope.addButton = "Added";
-       console.log(sale);
 
-
-       // .then(function(response){
-       //  console.log(response);
-       //    //$scope.getUserID(); //updates the list!
-       //  });
     })
     $scope.getMySales();
   }
