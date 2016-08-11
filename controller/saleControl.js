@@ -7,9 +7,10 @@ module.exports = {
       if(err){
         res.send(err);
       }
-      console.log(result);
-      //next(result);
-      res.send(result);
+      req.id = result._id;
+    //  console.log(result);
+      next();
+      //res.send(result);
     });
   },
   read: function(req, res){
