@@ -12,17 +12,8 @@ angular.module("garageApp")
       return res.data;
     });
   };
-  // this.getforgotPassword = function(reSetting){
-  //   return $http({
-  //     method:"POST",
-  //     url:"/forgot",
-  //     data:reSetting
-  //   })
-  //   .then(function(res){
-  //     console.log(res.data);
-  //     return res.data;
-  //   })
-  // }
+
+
   this.getKnownUser = function(userInfo){
     return $http({
       method:"GET",
@@ -32,6 +23,8 @@ angular.module("garageApp")
       return res;
     })
   }
+
+
   this.deleteSaleStuff = function(user){
     return $http({
       method:"GET",
@@ -55,6 +48,8 @@ angular.module("garageApp")
       return res;
     })
   }
+
+
   this.signupPostSignUp = function(userSignUp){
     console.log(userSignUp);
     return $http({
@@ -68,6 +63,8 @@ angular.module("garageApp")
     return res.data;
    })
   }
+
+
   this.getfacebooksignup = function(){
     return $http({
       method:"GET",
@@ -78,6 +75,8 @@ angular.module("garageApp")
       return res.data;
     })
   }
+
+
   this.getSignOut = function(){
   return $http({
     method:"GET",
@@ -88,6 +87,8 @@ angular.module("garageApp")
     return res;
   })
   }
+
+
   this.getSales = function(){
     return $http({
       method: 'GET',
@@ -96,6 +97,8 @@ angular.module("garageApp")
       return res.data;
     })
   }
+
+
   this.getAllSales = function(){
     return $http({
       method: 'GET',
@@ -105,6 +108,8 @@ angular.module("garageApp")
       return res.data;
     })
   }
+
+
   // this is for getting just one sale!
   this.getSale = function(){
     return $http({
@@ -114,6 +119,8 @@ angular.module("garageApp")
       return res.data;
     })
   }
+
+
   this.postSale = function(sale){
       console.log(sale);
     return $http({
@@ -124,6 +131,7 @@ angular.module("garageApp")
       return res.data;
     });
   };
+  
 
   this.getMySales = function(){
     return $http({
