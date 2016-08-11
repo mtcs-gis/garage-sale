@@ -1,23 +1,21 @@
 
 <div class="container text-center">
   <h2 id="create-title">Create Sale</h2>
-  <div class="form-group create-container">
-    <input class="form-control create-container" placeholder="Title" ng-model="sale.name">
+  <div class="form-group">
+    <center><input class="form-control" id="addSale" placeholder="Title" ng-model="sale.name">
     <br>
-    <input class="form-control create-container" type="date" placeholder="Date" ng-model="sale.startDate">
+    <input class="form-control" id="addSale" type="date" placeholder="Date" ng-model="sale.startDate">
     <br>
-    <input class="form-control create-container" type="date" placeholder="End Date" ng-model="sale.endDate">
+    <input class="form-control" id="addSale" type="date" placeholder="End Date" ng-model="sale.endDate">
     <br>
-    <input class="form-control create-container" placeholder="Address" ng-model="sale.address">
+    <input class="form-control" id="addSale" placeholder="Address" ng-model="sale.address">
     <br>
-    <input class="form-control create-container" type="date" placeholder="Date" ng-model="sale.date">
-    <br>
-    <br>
+    <input class="form-control" id="addSale" type="date" placeholder="Date" ng-model="sale.date"></center>
 </div>
   <div class="add-container">
-    <textarea class="form-control create-container" placeholder="Additional Information" ng-model="sale.comment" rows="4" cols="10"></textarea>
+    <textarea class="form-control" placeholder="Comments" ng-model="sale.comment" rows="4" cols="10"></textarea>
   </div>
   <button class="btn btn-success" id="addButton" type="button" ng-click="postSale(sale)">{{addButton}}</button>
-  <button class="btn btn-primary" id="addButton" type="button" ui-sref="map">To Map</button>
+  <button class="btn btn-primary" id="toMap" type="button" ui-sref="map" ng-click="initMap()">To Map</button>
 
 </div>
