@@ -127,7 +127,7 @@ module.exports = {
 			}
 		)
 	},
-	deleteSal: function(req, res){
+	deleteSale: function(req, res){
 		console.log()
 		UserModel.findOne({_id:req._user}, function(err, user){
 			var index = user.sale.indexOf(req.body._id);
@@ -140,17 +140,6 @@ module.exports = {
 				}
 			})
 		})
-	},
-	deleteSale: function(req, res){
-		console.log(req.body);
-		UserModel.findByIdAndUpdate(
-			req.body._user,
-			{$set: {"sale":req.body}},
-			{safe: true, upsert: true},
-			function(err, model){
-				console.log(err);
-				res.send(model);
-			})
 	},
 	forgot: function(req, res, next) {
 		  async.waterfall([
