@@ -2,7 +2,9 @@ var saleModel = require('./../model/saleModel.js');
 var userControl = require('./userControl');
 module.exports = {
   create: function(req, res, next){
+    req.body._user = req.user._id;
     var sale = new saleModel(req.body);
+
     sale.save(function(err, result){
       if(err){
         res.send(err);
@@ -51,7 +53,7 @@ module.exports = {
       res.send(result);
     })
   },
-  delete: function(req, res){
+  delete: function(req, res, next){
     saleModel.findByIdAndRemove(req.params.id, req.body, function(err, result){
       if(err){
         res.send(err);
