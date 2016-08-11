@@ -3,7 +3,6 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
   $scope.wrongCred = true;
   $scope.userName;
 
-
   $scope.postLogin = function(loginEmail, secret){
     var userLogin = {
       userName: loginEmail,
@@ -20,25 +19,36 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
         }
     })
   };
-  // $scope.forgotPassword = function(lostPassword){
-  //   var reSetting = {
-  //     userName: lostPassword
-  //        };
-  //   mainServ.getforgotPassword(reSetting)
-  //   .then(function(response){
-  //     console.log(response);
-  //
-  //   })
-  // };
-  $scope.postSignUp = function(signUpEmail, passWord){
-    var userSignUp = {
-      userName: signUpEmail,
-      password: passWord
-    };
+  $scope.forgotPassword = function(lostPassword){
+    var reSetting = {
+      userName: lostPassword
+         };
+    mainServ.getforgotPassword(reSetting)
+    .then(function(response){
+      console.log(response);
+
+    })
+  };
+  $scope.postSignUp = function(signUpEmail, passWord, passWordTwo){
+    var one = passWord;
+    var two = passWordTwo;
+    if(one === two){
+        var userSignUp = {
+        userName: signUpEmail,
+        password: one
+        };
+    } else {
+        alert("Passwords Don't Match!");
+    }
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
-          console.log(response.user.local.userName)
-      $location.path('map');
+        if(response.user.local){
+          $location.path('map');
+          //console.log(response.user.local.userName)
+        } else{
+          $location.path('/');
+        }
+      
     })
   };
 
