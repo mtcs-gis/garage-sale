@@ -1,4 +1,4 @@
-angular.module("garageApp").controller("formCtrl", function($scope, $location, mainServ){
+angular.module("garageApp" ).controller("formCtrl", function($scope, $location, mainServ){
 
   $scope.userId;
   $scope.success;
