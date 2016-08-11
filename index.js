@@ -79,8 +79,8 @@ app.put('/sales:id',saleControl.update);
 
 
 mongoose.connect(
-  "mongodb://localhost:27017/sales"
-//	config.mongolab_uri
+  //"mongodb://localhost:27017/sales"
+	config.mongolab_uri
 );
 
 mongoose.connection.once('open', function(){
