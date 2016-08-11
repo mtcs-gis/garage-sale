@@ -43,7 +43,7 @@ module.exports = {
 			})
 		})(req, res, next);
 	},
-	// facebook login works, 
+	// facebook login works,
 	// loginfacebook: function(req, res, next){
 	// 	passport.authenticate('facebook', function(err, user, info){
 	// 		// console.log(this);
@@ -126,16 +126,16 @@ module.exports = {
 			}
 		)
 	},
-	getUser: function(req, res){
-		res.send(req.user);
-	},
 	deleteSale: function(req, res){
 		console.log()
 		UserModel.findOne({_id:req._user}, function(err, user){
+			if(err){
+				console.log(err);
+			}
 			var index = user.sale.indexOf(req.body._id);
 			user.sale.splice(index,1);
-			user.save(function(err){
-				if(err){
+			user.save(function(error){
+				if(error){
 					console.log(err)
 				} else {
 					res.send(req.body);
