@@ -1,4 +1,26 @@
-angular.module("garageApp").controller("formCtrl", function($scope, $location, mainServ){
+angular.module("garageApp" ).controller("formCtrl", function($scope, $location, mainServ){
+
+//,['ui.bootstrap']
+function(){
+  var vm = this;
+  
+  vm.valuationDate = new Date();
+  vm.valuationDatePickerIsOpen = false;
+  
+  vm.valuationDatePickerOpen = function () {
+
+      this.valuationDatePickerIsOpen = true;
+  };
+
+
+
+
+
+
+
+
+
+
 
   $scope.userId;
   $scope.success;
