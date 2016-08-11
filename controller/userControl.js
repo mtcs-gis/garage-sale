@@ -127,13 +127,6 @@ module.exports = {
 			}
 		)
 	},
-	addSal: function(req, res){
-		console.log(req.body);
-
-		UserModel.findById(req._user), function(err, result){
-			res.send("sploop");
-		}
-	},
 	updateSale: function(req, res){
 		console.log(req.body);
 		UserModel.findByIdAndUpdate(
