@@ -3,14 +3,17 @@ body {
   height: auto;
   background: repeating-linear-gradient(
     -55deg,
-    #222,
-    #222 10px,
-    #333 10px,
-    #333 20px
+    #0d47a1,
+    #0d47a1 10px,
+    #0b4196 10px,
+    #0b4196 20px
   );
   font-family: 'Satisfy', cursive;
   -webkit-font-smoothing: antialiased;
 }
+
+/*#0b4196 10px,*/
+
 
 .landing-page {
   text-align: center;
@@ -25,11 +28,19 @@ body {
 
 #title {
   color: #fff;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .login-container, .signup-container {
   height: auto;
+}
+
+.login-container {
+  margin-left: 10vw;
+}
+
+.signup-container {
+  margin-right: 10vw;
 }
 
 #wrongLogin {
@@ -40,7 +51,9 @@ body {
   color: white;
 }
 
-
+#saleNames {
+  color: white;
+}
 
 #login {
   margin-top: .5rem;
@@ -62,12 +75,27 @@ body {
 }
 
 #enterButton:hover {
-  color: red;
+  color: rgb(185, 17, 17);
   background-color: white;
 }
 
+.social-links {
+  display: inline-block;
+  margin-right:.35rem;
+  color: white;
+  font-size: 2rem;
+}
+
+
+#logout {
+  background-color: rgb(185, 17, 17);
+  border: none;
+  width: 10rem;
+  font-size: 2rem;
+}
+
+
 .form-control {
-  text-align: center;
   width: 35rem;
   height: 5rem;
   font-family: sans-serif;
@@ -135,7 +163,6 @@ cite {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
 }
 
 .saleBox {
@@ -152,11 +179,8 @@ cite {
   text-align: center;
 }
 
-.create-container {
-  height: auto;
-  display: flex;
-  justify-content: center;
-}
+
+
 
 h2 {
   color: white;
@@ -179,10 +203,20 @@ h2 {
 }
 
 #addButton {
+  border: none;
   margin-top: 2rem;
   width: 10rem;
   font-size: 2rem;
+  background-color: rgb(185, 17, 17);
+}
 
+#toMap {
+  background-color: white;
+  color: #0d47a1;
+  border: none;
+  margin-top: 2rem;
+  width: 10rem;
+  font-size: 2rem;
 }
 
 li {
