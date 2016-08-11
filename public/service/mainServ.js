@@ -63,14 +63,15 @@ angular.module("garageApp")
   }
 
   this.signupPostSignUp = function(userSignUp){
+    console.log(userSignUp);
     return $http({
     method:"POST",
     url:"/signup",
     data: userSignUp
    })
    .then(function(res){
-    //console.log(response.data);
-    console.log("You have Signed in like a champ!");
+    console.log(res.data);
+    // console.log("You have Signed in like a champ!");
     return res.data;
    })
   }
@@ -121,7 +122,7 @@ angular.module("garageApp")
   this.getSale = function(){
     return $http({
       method: 'GET',
-      url: '/sales/' 
+      url: '/sales/'
     }).then(function(res){
       return res.data;
     })
