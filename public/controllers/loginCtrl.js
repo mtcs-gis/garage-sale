@@ -29,26 +29,21 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
 
     })
   };
-  $scope.postSignUp = function(signUpEmail, passWord, passWordTwo){
-    var one = passWord;
-    var two = passWordTwo;
-    if(one === two){
+  $scope.postSignUp = function(signUpEmail, password){
         var userSignUp = {
         userName: signUpEmail,
-        password: one
+        password: password
         };
-    } else {
-        alert("Passwords Don't Match!");
-    }
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
+      console.log(response);
         if(response.user.local){
           $location.path('map');
           //console.log(response.user.local.userName)
         } else{
           $location.path('/');
         }
-      
+
     })
   };
 

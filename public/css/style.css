@@ -1,16 +1,14 @@
 body {
   width: 100%;
   height: auto;
-  background: repeating-linear-gradient(
-    -55deg,
-    #0d47a1,
-    #0d47a1 10px,
-    #0b4196 10px,
-    #0b4196 20px
-  );
+  background-color: #0d47a1;
   font-family: 'Satisfy', cursive;
   -webkit-font-smoothing: antialiased;
 }
+
+/*#0d47a1,*/
+
+/*#0d47a1 10px,*/
 
 /*#0b4196 10px,*/
 
@@ -22,8 +20,15 @@ body {
   height: auto;
 }
 
+#yardImg {
+  width: 35rem;
+  height: 35rem;
+}
+
 #welcome {
-  font-size: 8rem;
+  font-size: 6rem;
+  font-family: sans-serif;
+  font-weight: lighter;
 }
 
 #title {
@@ -67,6 +72,8 @@ body {
   background-color: red;
 }
 
+/*rgb(185, 17, 17)*/
+
 #enterButton {
   width: 15rem;
   font-size: 3rem;
@@ -75,7 +82,7 @@ body {
 }
 
 #enterButton:hover {
-  color: rgb(185, 17, 17);
+  color: rgb(198, 86, 61);
   background-color: white;
 }
 
@@ -86,9 +93,32 @@ body {
   font-size: 2rem;
 }
 
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: justify;
+  margin: 1rem;
+  color: #0d47a1;
+}
+
+.content-list  {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 1rem;
+  list-style: none;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 2rem;
+  background-color: white;
+}
+
+#nameName {
+  text-align: center;
+}
 
 #logout {
-  background-color: rgb(185, 17, 17);
+  background-color: rgb(198, 86, 61);
   border: none;
   width: 10rem;
   font-size: 2rem;
@@ -207,7 +237,7 @@ h2 {
   margin-top: 2rem;
   width: 10rem;
   font-size: 2rem;
-  background-color: rgb(185, 17, 17);
+  background-color: rgb(198, 86, 61);
 }
 
 #toMap {
