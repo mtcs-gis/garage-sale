@@ -15,8 +15,14 @@
     </div>
   <button class="btn btn-success" id="addButton" type="button" ng-click="postSale(sale)">{{addButton}}</button>
   <button class="btn btn-primary" id="toMap" type="button" ui-sref="map" ng-click="initMap()">To Map</button>
+  <button class="btn btn-primary" id="toSales" type="button" ng-click="getMySales()">Your Sales</button>
 
-</div>
-<div class="sale-list" ng-repeat="sale in mySales">
-  <p>{{sale.name}}</p>
+    <center><div class="content-list" ng-repeat="sale in mySales track by $index">
+      <br>
+      <h4>{{sale.name}}</h4>
+      <h4>{{sale.address}}</h4>
+      <h4>{{sale.date | date}}</h4>
+      <br>
+      <button class="btn btn-primary" name="button" ng-click="">Delete</button>
+    </div></center>
 </div>

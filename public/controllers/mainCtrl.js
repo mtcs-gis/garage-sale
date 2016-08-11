@@ -110,6 +110,5 @@ $scope.getSales = function(){
       mainServ.getSignOut()
       .then(function(response){
       })
-  }
-
-});
+    }
+  });
