@@ -3,10 +3,7 @@
   <form ng-submit="postSignUp(signUpEmail, password)" ng-controller="loginCtrl">
     <input class="form-control" type="email" ng-model="signUpEmail" placeholder="Email Address"/>
     <input class="form-control" type="password" ng-model="password" placeholder="Password" ng-require="true"/>
-    <!-- <input class="form-control"	type="password" ng-model="passWordTwo" placeholder="Password Confirm" ng-require="true" /> -->
     <button class="btn btn-warning" id="login" type="submit" name="button"><i class="fa fa-arrow-right" aria-hidden="true"></i>
-   	<!-- <span ng-show="passWord !== passWordTwo">Password don't Match</span>
-   	<span ng-show="passWord === passWordTwo">Password's Match!</span> -->
   </button>
   </form>
 </div>

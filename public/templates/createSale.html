@@ -18,10 +18,9 @@
   <button class="btn btn-primary" id="toSales" type="button" ng-click="getMySales()">Your Sales</button>
 
     <center><div class="content-list" ng-repeat="sale in mySales track by $index">
-      <br>
-      <h4>{{sale.name}}</h4>
-      <h4>{{sale.address}}</h4>
-      <h4>{{sale.date | date}}</h4>
+      <h4 id="sale-list-content">{{sale.name | uppercase}}</h4>
+      <h4 id="sale-list-content">{{sale.address | uppercase}}</h4>
+      <h4 id="sale-list-content">{{sale.date | date}}</h4>
       <br>
       <button class="btn btn-primary" name="button" ng-click="">Delete</button>
     </div></center>
