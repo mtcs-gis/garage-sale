@@ -68,53 +68,37 @@ module.exports = function(passport) { //call in passport as a parameter
           });
         });
     }));
-    passport.use(new FacebookStrategy({
-        clientID: configAuth.facebookAuth.clientID,
-        clientSecret: configAuth.facebookAuth.clientSecret,
-        callbackURL: configAuth.facebookAuth.callbackURL,
-        profileFields: ["emails" , "displayName", "name", "picture.type(large)", "gender", "birthday"]
-        },
-        function(accessToken, refreshToken, profile, done){
-              process.nextTick(function(){User.findOne({'facebook.id': profile.id}, 
-                function(err, user){ if(err) return done(err); if(user) return done(null, user); else {
-                      var newUser = new User();
-                      console.log(profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg');
-                      //set all of the face information in our user model
-                      newUser.facebook.id = profile.id;
-                      newUser.facebook.took = accessToken;
-                      newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                      newUser.facebook.gender = profile.gender;
-                      newUser.facebook.birthday = profile.birthday;
-                      newUser.facebook.picture = profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg';
+    // Facebook login, works at this current time
+    // passport.use(new FacebookStrategy({
+    //     clientID: configAuth.facebookAuth.clientID,
+    //     clientSecret: configAuth.facebookAuth.clientSecret,
+    //     callbackURL: configAuth.facebookAuth.callbackURL,
+    //     profileFields: ["emails" , "displayName", "name", "picture.type(large)", "gender", "birthday"]
+    //     },
+    //     function(accessToken, refreshToken, profile, done){
+    //           process.nextTick(function(){User.findOne({'facebook.id': profile.id}, 
+    //             function(err, user){ if(err) return done(err); if(user) return done(null, user); else {
+    //                   var newUser = new User();
+    //                   console.log(profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg');
+    //                   //set all of the face information in our user model
+    //                   newUser.facebook.id = profile.id;
+    //                   newUser.facebook.took = accessToken;
+    //                   newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+    //                   newUser.facebook.gender = profile.gender;
+    //                   newUser.facebook.birthday = profile.birthday;
+    //                   newUser.facebook.picture = profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg';
 
-                  newUser.save(function(err){
-                    if(err)
-                      throw err;
-                    return done(null, newUser);
-                  })
-                  return done( null,  newUser);
-                  console.log(profile);
-            };
+    //               newUser.save(function(err){
+    //                 if(err)
+    //                   throw err;
+    //                 return done(null, newUser);
+    //               })
+    //               return done( null,  newUser);
+    //               console.log(profile);
+    //         };
               
-          });
-        });
-    }));
-
-
- // function(token, tokenSecret, profile, done){
- //        return done(null, profile);
-        
-
-
-
-
-
-
-
- //        }))
-
-
-
-
+    //       });
+    //     });
+    // }));
 
 };
