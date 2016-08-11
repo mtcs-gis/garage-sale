@@ -1,11 +1,11 @@
-module.exports = {
+// module.exports = {
 
-	"facebookAuth": {
-		clientID:'604081799753537',
-		clientSecret:'eb1cc89d34bc0bfae8c4da3340fd5bdb',
- 		callbackURL:'http://localhost:3000/auth/facebook/callback'
-	}
-}
+// 	"facebookAuth": {
+// 		clientID:'604081799753537',
+// 		clientSecret:'eb1cc89d34bc0bfae8c4da3340fd5bdb',
+//  		callbackURL:'http://localhost:3000/auth/facebook/callback'
+// 	}
+// }
 
 
 

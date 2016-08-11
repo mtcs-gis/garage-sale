@@ -4,18 +4,17 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var config = require('./config.js');
-var nodemailer = require('nodemailer'); //password reset
-var sgTransport = require('nodemailer-sendgrid-transport'); //password reset
-var sendgrid  = require('sendgrid'); //password reset
-var User = require('./model/userModel'); // password reset
-var engine = require('consolidate');
+//var nodemailer = require('nodemailer'); //password reset
+//var sgTransport = require('nodemailer-sendgrid-transport'); //password reset
+//var sendgrid  = require('sendgrid'); //password reset
+//var User = require('./model/userModel'); // password reset
+//var engine = require('consolidate'); //password reset && view controll
 
-var options = {
-	auth: {
-
-	}
-};
-var mailer = nodemailer.createTransport(sgTransport(options));
+// 	auth: {
+// 		key is needed
+// 	}
+// };
+// var mailer = nodemailer.createTransport(sgTransport(options));
 
 var passport = require('passport');
 
@@ -40,25 +39,26 @@ var saleControl = require('./controller/saleControl.js')
 
 
 
-app.post('/login', userControl.login);
-app.post('/signup', userControl.signup);
-app.get('/logout', userControl.logout);
+app.post('/login', userControl.login); //logining in
+app.post('/signup', userControl.signup); //signing up
+app.get('/logout', userControl.logout);	//logging out
+// app.post('/forgot', userControl.forogt) //password reset
 
 
-
-
-app.get('/auth/facebook', userControl.loginfacebook);
-app.get('/auth/facebook', userControl.loginfacebook);
-app.get("/auth/facebook/callback", passport.authenticate('facebook', {
-		successRedirect: "/",
-		failureRedirect: "/logout"
-}), function(req, res){
-	console.log(req.sesion);
-});
+// facebook login that works currently still
+// app.get('/auth/facebook', userControl.loginfacebook);
+// app.get('/auth/facebook', userControl.loginfacebook);
+// app.get("/auth/facebook/callback", passport.authenticate('facebook', {
+// 		successRedirect: "/",
+// 		failureRedirect: "/logout"
+// }), function(req, res){
+// 	console.log(req.sesion);
+// });
 
 
 app.get('/users', userControl.getAllUsers);
 app.get('/user/:id', userControl.getOneUser);
+app.get('/user', userControl.getUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
 app.post('/sale/:id', userControl.addSale);
@@ -68,6 +68,7 @@ app.post('/sale/:id', userControl.addSale);
 app.post('/sale', saleControl.create, userControl.addSale );
 app.get('/sale', saleControl.read);
 app.get('/sale/:id', saleControl.readById);
+app.get('/mysales', saleControl.readByUser);
 app.put('/sale/:id', saleControl.update );
 app.delete('/sale/:id', saleControl.delete, userControl.deleteSale);
 
@@ -77,16 +78,11 @@ app.post('/sales', saleControl.create);
 app.get('/sales:id',saleControl.readById);
 app.put('/sales:id',saleControl.update);
 
-app.get('/profile', function(req, res){
-	res.send(req.user);
-});
-
-
 
 
 mongoose.connect(
   "mongodb://localhost:27017/sales"
-	//config.mongolab_uri
+//	config.mongolab_uri
 );
 
 mongoose.connection.once('open', function(){

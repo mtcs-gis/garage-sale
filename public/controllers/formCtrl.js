@@ -1,11 +1,12 @@
-angular.module("garageApp").controller("formCtrl", function($scope, $location, mainServ){
+angular.module("garageApp" ).controller("formCtrl", function($scope, $location, mainServ){
 
   $scope.userId;
   $scope.success;
   $scope.addButton = "Add Sale";
-
+  $scope.mySales;
 
   (function (userInfo){
+    console.log(userInfo)
     mainServ.getKnownUser(userInfo)
     .then(function(response){
       //console.log(response);
@@ -27,8 +28,9 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
   $scope.postSale = function(sale){
 
-    var addObj = {address:sale.address + "Bozeman"
+    var addObj = {address:sale.address + " Bozeman"
     };
+    
     console.log(addObj);
 
     geocoder.geocode(addObj, function(results, status){
@@ -39,6 +41,13 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
        sale.lng = temp.f.f;
        mainServ.postSale(sale)
 
+    })
+    $scope.getMySales();
+  }
+  $scope.getMySales = function(){
+    mainServ.getMySales()
+    .then(function(response){
+      $scope.mySales = response;
     })
   }
 

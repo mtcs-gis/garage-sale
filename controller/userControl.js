@@ -3,17 +3,17 @@ var passport = require('passport'); //passort
 var LocalStrategy = require('passport-local').Strategy; //passport
 var FacebookStrategy = require('passport-facebook').Strategy; //passport
 var mongoose = require('mongoose');
-var crypto = require('crypto'); //password reset
-var async = require('async'); //password reset
-var nodemailer = require('nodemailer');
-var sgTransport = require('nodemailer-sendgrid-transport');
-var sendgrid  = require('sendgrid');
-var options = {
-	auth: {
-		api_key: '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'
-	}
-};
-var mailer = nodemailer.createTransport(sgTransport(options));
+// var crypto = require('crypto'); //password reset
+// var async = require('async'); //password reset
+// var nodemailer = require('nodemailer');
+// var sgTransport = require('nodemailer-sendgrid-transport');
+// var sendgrid  = require('sendgrid');
+// var options = {
+// 	auth: {
+// 		api_key: ''
+// 	}
+// };
+// var mailer = nodemailer.createTransport(sgTransport(options));
 
 
 
@@ -25,6 +25,7 @@ module.exports = {
 			if(!user) { return res.json({ message: "Please enter your Email & Password "}) } //{ return res.status(404).json(info.message) }
 			req.login(user, function(err){
 				if(err) { return next(err); }
+				console.log(req.user);
 				return res.json({ message: 'You logged in like a champ!', user: user });
 			});
 		})(req, res, next);
@@ -42,20 +43,18 @@ module.exports = {
 			})
 		})(req, res, next);
 	},
-
-	loginfacebook: function(req, res, next){
-		passport.authenticate('facebook', function(err, user, info){
-			// console.log(this);
-			if(err) { return next(err); }
-			if(!user) { return res.status(404).json(info.message) }
-			req.login(user, function(err){
-				if(err) { return next(err); }
-				return res.json({ message: 'You logged into FaceBook like a champ!', user: user });
-			});
-		})(req, res, next);
-
-	},
-
+	// facebook login works, 
+	// loginfacebook: function(req, res, next){
+	// 	passport.authenticate('facebook', function(err, user, info){
+	// 		// console.log(this);
+	// 		if(err) { return next(err); }
+	// 		if(!user) { return res.status(404).json(info.message) }
+	// 		req.login(user, function(err){
+	// 			if(err) { return next(err); }
+	// 			return res.json({ message: 'You logged into FaceBook like a champ!', user: user });
+	// 		});
+	// 	})(req, res, next);
+	// },
 	update: function(req, res, next){
 
 		UserModel.findByIdAndUpdate(req.params.id, req.body, function(err, result){
@@ -118,7 +117,7 @@ module.exports = {
 	addSale: function(req, res){
 		console.log(req.id);
 		UserModel.findByIdAndUpdate(
-			req.body._user,
+			req.user._id,
 			{$push: {"sale":req.id}},
 			{safe: true, upsert: true},
 			function(err, model){
@@ -126,6 +125,9 @@ module.exports = {
 				res.send(model);
 			}
 		)
+	},
+	getUser: function(req, res){
+		res.send(req.user);
 	},
 	deleteSale: function(req, res){
 		console.log()
@@ -141,49 +143,49 @@ module.exports = {
 			})
 		})
 	},
-	forgot: function(req, res, next) {
-		  async.waterfall([
-		    function(done) {
-		      crypto.randomBytes(20, function(err, buf) {
-		        var token = buf.toString('hex');
-		        done(err, token);
-		      });
-		    },
-		    function(token, done) {
-		      UserModel.findOne({ 'local.userName' : req.body.userName }, function(err, user) {
-		         if (!user) {
-		          req.flash('error', 'No account with that email address exists.');
-		          return res.redirect('/forgot');
-		        }
+	// forgot: function(req, res, next) {
+	// 	  async.waterfall([
+	// 	    function(done) {
+	// 	      crypto.randomBytes(20, function(err, buf) {
+	// 	        var token = buf.toString('hex');
+	// 	        done(err, token);
+	// 	      });
+	// 	    },
+	// 	    function(token, done) {
+	// 	      UserModel.findOne({ 'local.userName' : req.body.userName }, function(err, user) {
+	// 	         if (!user) {
+	// 	          req.flash('error', 'No account with that email address exists.');
+	// 	          return res.redirect('/forgot');
+	// 	        }
 
-		        user.resetPasswordToken = token;
-		        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+	// 	        user.resetPasswordToken = token;
+	// 	        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
-		        user.save(function(err) {
-		          done(err, token, user);
-		        });
-		      });
-		    },
-		    function(token, user, done) {
-			    var mailOptions = {
-			        to: user.local.userName,
-			        from: 'passwordreset@yardsailrs.info',
-			        subject: 'Demo Password Reset',
-			        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-			      	'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-			      	'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-			      	'If you did not request this, please ignore this Email and your password will remain unchanged.\n'
-		      };
-		      mailer.sendMail(mailOptions, function(err, json) {
-		        req.flash('info', 'An e-mail has been sent to ' + user.local.userName + ' with further instructions. Please follow the instructions and complete reset within the hour.');
-		        done(err, 'done');
-		      });
-		    }
-		  ], function(err) {
-		    if (err) return next(err);
-		    res.redirect('/forgot');
-		  });
-		}
+	// 	        user.save(function(err) {
+	// 	          done(err, token, user);
+	// 	        });
+	// 	      });
+	// 	    },
+	// 	    function(token, user, done) {
+	// 		    var mailOptions = {
+	// 		        to: user.local.userName,
+	// 		        from: 'passwordreset@yardsailrs.info',
+	// 		        subject: 'Demo Password Reset',
+	// 		        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+	// 		      	'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+	// 		      	'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+	// 		      	'If you did not request this, please ignore this Email and your password will remain unchanged.\n'
+	// 	      };
+	// 	      mailer.sendMail(mailOptions, function(err, json) {
+	// 	        req.flash('info', 'An e-mail has been sent to ' + user.local.userName + ' with further instructions. Please follow the instructions and complete reset within the hour.');
+	// 	        done(err, 'done');
+	// 	      });
+	// 	    }
+	// 	  ], function(err) {
+	// 	    if (err) return next(err);
+	// 	    res.redirect('/forgot');
+	// 	  });
+	// 	}
 
 
 
