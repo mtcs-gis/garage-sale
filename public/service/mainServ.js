@@ -107,10 +107,10 @@ angular.module("garageApp")
     })
   }
 
-  this.getAllUserSales = function(){
+  this.getAllSales = function(){
     return $http({
       method: 'GET',
-      url: '/users'
+      url: '/sales'
     }).then(function(res){
       console.log(res.data);
       return res.data;

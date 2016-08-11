@@ -27,7 +27,8 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
   $scope.postSale = function(sale){
     console.log(sale)
-    var addObj = {address:sale.address};
+    var addObj = {address:sale.address + "Bozeman"
+    };
     console.log(addObj);
 
     geocoder.geocode(addObj, function(results, status){

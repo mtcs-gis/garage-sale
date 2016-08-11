@@ -36,7 +36,6 @@ angular.module("garageApp", ["ui.router"]).config(function($stateProvider,$urlRo
   //   url:"/forgot",
   //   templateUrl: "./../templates/forgot.html"
   //   //controller: "forgotCtrl"
-  })
 
 
   $urlRouterProvider.otherwise("/landingPage");

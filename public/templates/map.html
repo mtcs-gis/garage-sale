@@ -2,19 +2,20 @@
 <div class="container text-center" ng-init="initMap()">
   <br>
   <div class="text-right">
-    <button class="btn btn-primary" ng-click="signOut()">Logout</button>
+    <button class="btn btn-primary" ng-click="signOut()" ui-sref="landingPage">Logout</button>
   </div>
   <br>
   <div class="">
     <button class="btn btn-warning" id="enterButton" ui-sref="createSale">Create Sale</button>
     <br>
-    <cite>Please Login to Post a Sale</cite>
   </div>
   <br>
     <div class="map" id="map">
     </div>
     <div class="">
-      <h1 id="title">Something here</h1>
+      <h1>{{name}}</h1>
+      
+
     </div>
 
   </div>

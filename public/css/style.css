@@ -25,11 +25,19 @@ body {
 
 #title {
   color: #fff;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .login-container, .signup-container {
   height: auto;
+}
+
+.login-container {
+  margin-left: 10vw;
+}
+
+.signup-container {
+  margin-right: 10vw;
 }
 
 #wrongLogin {

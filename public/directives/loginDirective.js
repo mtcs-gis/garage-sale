@@ -37,3 +37,12 @@ angular.module("garageApp").directive("loginDirective", function(){
   }
 
 })
+
+.directive("contentDirective", function(){
+
+  return {
+    templateUrl: './../template/saleContent.html',
+    restrict: "E"
+  }
+
+})

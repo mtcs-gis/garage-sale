@@ -2,32 +2,27 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
 
 //initializing variables g scope
 
-var map;
-var addPos;
-var info;
-var infoWindow;
-var markerPos;
-var marker;
+  var map;
+  var addPos;
+  var info;
+  var infoWindow;
+  var markerPos;
+  var marker;
 
-$scope.userName;
-$scope.landingPage = true;
-$scope.mapPage = true;
+  $scope.content = {};
+  var name;
+  var address;
+  var time;
+  var date;
 
-$scope.labels= [];
-
-$scope.count;
-$scope.saleInfo = [];
-
-
-  // $scope.enterMapPage = function(){
-  //   $scope.mapPage = false;
-  //   $scope.landingPage=false;
-  // };
 
 
   $scope.getUsername = function(name){
     $scope.userName = name;
   }
+
+
+
 
 
 // creating initmap to get the map started
@@ -37,46 +32,34 @@ $scope.saleInfo = [];
       center: {lat:45.6708, lng: -111.0678},
       zoom: 11
     });
-    $scope.getUserSales();
+    $scope.getSales();
   }
 
 //end of map function
 
 // beginning of getSales
 
-  $scope.getUserSales = function(){
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var labelIndex = 0;
-    var content;
-    var infoWindow;
-    mainServ.getAllUserSales()
-    .then(function(res){
-      console.log(res);
-      for(var i = 0; i < res.length; i++){
-        for(var j = 0; i < res[i].sale.length; j++){
-          addPos = {
-            lng: res[i].sale[j].lat,
-            lat: res[i].sale[j].lng
-          }
 
-// still looking to do circles
+$scope.getSales = function(){
+  mainServ.getAllSales()
+  .then(function(response){
+    for(var i = 0; i < response.length; i++){
+      $scope.name = response[0].name
 
-        marker = new google.maps.Marker({
-          position: addPos,
-          map: map,
-          animation:google.maps.Animation.DROP,
-          label: labels[labelIndex++ % labels.length]
-        });
-
-        content = res[i].sale[j];
-        $scope.saleInfo.push(content);
-        // lable.push(marker.label);
+      addPos = {
+        lng: response[i].lat,
+        lat: response[i].lng
       }
-    }
-    $scope.saleInfo;
 
+      marker = new google.maps.Marker({
+        position: addPos,
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      })
+    }
   })
 }
+
 
   $scope.updateSale = function(sale){
     mainServ.updateSale(sale);
@@ -110,7 +93,6 @@ $scope.saleInfo = [];
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
-      $location.path('/');
       })
   }
 
