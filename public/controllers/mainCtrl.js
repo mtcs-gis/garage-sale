@@ -38,6 +38,7 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
 // beginning of getSales
 
 
+
 $scope.getSales = function(){
   mainServ.getAllSales()
   .then(function(response){
@@ -50,21 +51,21 @@ $scope.getSales = function(){
         lat: response[i].lng
       }
 
-      circle = new google.maps.Circle({
-        strokeColor: '#0d47a1',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#0d47a1',
-        fillOpacity: 0.35,
-        map: map,
-        center: addPos,
-        radius: 200
-      })
-      // marker = new google.maps.Marker({
-      //   position: addPos,
+      // circle = new google.maps.Circle({
+      //   strokeColor: 'rgb(198, 86, 61)',
+      //   strokeOpacity: 0.8,
+      //   strokeWeight: 1,
+      //   fillColor: 'rgb(198, 86, 61)',
+      //   fillOpacity: 0.35,
       //   map: map,
-      //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      //   center: addPos,
+      //   radius: 200
       // })
+      marker = new google.maps.Marker({
+        position: addPos,
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      })
     }
   })
 }
