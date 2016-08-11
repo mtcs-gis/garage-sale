@@ -29,8 +29,9 @@ angular.module("garageApp").controller("profileCtrl", function($scope, mainServ)
 
     });
 
-    $scope.deleteSale = function(stuff){
-      mainServ.deleteSaleStuff(stuff)
+    $scope.deleteSale = function(id){
+      console.log(id);
+      mainServ.deleteSale(id)
       .then(function(response){
         console.log(response);
       })

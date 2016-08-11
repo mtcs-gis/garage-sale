@@ -25,11 +25,10 @@ angular.module("garageApp")
   }
 
 
-  this.deleteSaleStuff = function(user){
+  this.deleteSale = function(id){
     return $http({
-      method:"GET",
-      url:"/user/" + user._id,
-      data:user
+      method:"DELETE",
+      url:"/sale/" + id
     })
     .then(function(res){
       return res;
@@ -131,7 +130,7 @@ angular.module("garageApp")
       return res.data;
     });
   };
-  
+
 
   this.getMySales = function(){
     return $http({

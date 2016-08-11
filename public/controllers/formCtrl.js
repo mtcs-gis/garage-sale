@@ -35,14 +35,14 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
 
     geocoder.geocode(addObj, function(results, status){
        var temp = results[0].geometry.viewport;
-       sale._user = $scope.userId;
+
 
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
        mainServ.postSale(sale)
-
+       $scope.getMySales();
     })
-    $scope.getMySales();
+
   }
   $scope.getMySales = function(){
     mainServ.getMySales()
@@ -51,10 +51,11 @@ angular.module("garageApp" ).controller("formCtrl", function($scope, $location, 
     })
   }
 
-  $scope.deleteSale = function(user){
-    mainServ.deleteSaleStuff(user)
+  $scope.deleteSale = function(id){
+    console.log(id);
+    mainServ.deleteSale(id)
     .then(function(response){
-      console.log(response);
+      $scope.getMySales();
     })
   }
 

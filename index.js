@@ -58,9 +58,7 @@ app.get('/logout', userControl.logout);	//logging out
 
 app.get('/users', userControl.getAllUsers);
 app.get('/user/:id', userControl.getOneUser);
-app.get('/user', userControl.getUser);
 app.put('/user/:id', userControl.update);
-app.delete('/user/:id', userControl.delete);
 app.post('/sale/:id', userControl.addSale);
 // app.put('/sale/:id', userControl.updateSale);
 
