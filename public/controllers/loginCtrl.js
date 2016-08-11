@@ -1,6 +1,5 @@
 angular.module('garageApp').controller('loginCtrl', function($scope, $location, mainServ){
 
-
   $scope.wrongCred = true;
   $scope.userName;
 
@@ -38,22 +37,10 @@ angular.module('garageApp').controller('loginCtrl', function($scope, $location, 
     };
     mainServ.signupPostSignUp(userSignUp)
     .then(function(response){
-      console.log(response.user.local.userName)
+          console.log(response.user.local.userName)
       $location.path('map');
     })
   };
-
-  // $scope.facebooksignup = function(){
-  //   $window.location.reload(); //refresh the windows
-  // };
-
-
-
-
-
-
-
-
 
 
 

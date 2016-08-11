@@ -117,16 +117,15 @@ angular.module("garageApp")
     })
   }
 
-  // // this is for getting just one sale!
-
-  // this.getSale = function(id){
-  //   return $http({
-  //     method: 'GET',
-  //     url: '/sales/' +id
-  //   }).then(function(res){
-  //     return res.data;
-  //   })
-  // }
+  // this is for getting just one sale!
+  this.getSale = function(){
+    return $http({
+      method: 'GET',
+      url: '/sales/' 
+    }).then(function(res){
+      return res.data;
+    })
+  }
 
   this.postSale = function(sale){
       console.log(sale);
@@ -135,10 +134,9 @@ angular.module("garageApp")
       url: '/sale',
       data: sale
     }).then(function(res){
-      console.log(res.data);
       return res.data;
-    })
-  }
+    });
+  };
 
   // this.updateSale = function(sale){
   //   return $http({

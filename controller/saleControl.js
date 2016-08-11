@@ -7,9 +7,11 @@ module.exports = {
       if(err){
         res.send(err);
       }
-      console.log(result);
-      //next(result);
-      res.send(result);
+      //add sale id to req
+      req.id = result._id;
+      //call userControl.addSale
+      next();
+
     });
   },
   read: function(req, res){
