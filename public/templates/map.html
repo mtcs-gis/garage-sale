@@ -2,7 +2,13 @@
 <div class="container text-center" ng-init="initMap()">
   <br>
   <div class="text-right">
-    <button class="btn btn-primary" ng-click="signOut()" ui-sref="landingPage">Logout</button>
+    <ul class="social-icons">
+      <li class="social-links" ><i class="fa fa-facebook" aria-hidden="true"></i></li>
+      <li class="social-links" ><i class="fa fa-twitter" aria-hidden="true"></i></li>
+      <li class="social-links" ><i class="fa fa-instagram" aria-hidden="true"></i></li>
+      <li class="social-links" ><i class="fa fa-github" aria-hidden="true"></i></li>
+    </ul>
+    <button class="btn btn-primary" ng-click="signOut()" id="logout" ui-sref="landingPage">Logout</button>
   </div>
   <br>
   <div class="">
@@ -12,10 +18,9 @@
   <br>
     <div class="map" id="map">
     </div>
-    <div class="">
-      <h1>{{name}}</h1>
-      
-
+    <div class="" ng-repeat="name in names track by $index">
+      <h1 id="saleNames">{{name.name}} - {{name.address}} - {{name.date | date}}</h1>
+      <h1 id="saleNames"></h1>
     </div>
 
   </div>

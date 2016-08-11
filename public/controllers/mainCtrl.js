@@ -9,12 +9,10 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
   var markerPos;
   var marker;
 
-  $scope.content = {};
-  var name;
-  var address;
-  var time;
-  var date;
 
+
+
+  $scope.names = {};
 
 
   $scope.getUsername = function(name){
@@ -30,7 +28,7 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
   $scope.initMap = function(){
     map = new google.maps.Map(document.getElementById('map'),{
       center: {lat:45.6708, lng: -111.0678},
-      zoom: 11
+      zoom: 12
     });
     $scope.getSales();
   }
@@ -44,18 +42,29 @@ $scope.getSales = function(){
   mainServ.getAllSales()
   .then(function(response){
     for(var i = 0; i < response.length; i++){
-      $scope.name = response[0].name
+
+      $scope.names= response;
 
       addPos = {
         lng: response[i].lat,
         lat: response[i].lng
       }
 
-      marker = new google.maps.Marker({
-        position: addPos,
+      circle = new google.maps.Circle({
+        strokeColor: '#0d47a1',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '#0d47a1',
+        fillOpacity: 0.35,
         map: map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        center: addPos,
+        radius: 200
       })
+      // marker = new google.maps.Marker({
+      //   position: addPos,
+      //   map: map,
+      //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      // })
     }
   })
 }
