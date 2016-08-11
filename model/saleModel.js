@@ -6,7 +6,8 @@ var SaleSchema = new mongoose.Schema({
   address: {type:String},
   lat: {type:Number},
   lng: {type:Number},
-  date:{type:Date, default:'8/1/2016'}
+  date:{type:Date, default:'8/1/2016'},
+  comment: {type:String}
 })
 
 module.exports = mongoose.model("Sale", SaleSchema);

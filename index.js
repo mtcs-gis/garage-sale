@@ -59,6 +59,7 @@ app.get("/auth/facebook/callback", passport.authenticate('facebook', {
 
 app.get('/users', userControl.getAllUsers);
 app.get('/user/:id', userControl.getOneUser);
+app.get('/user', userControl.getUser);
 app.put('/user/:id', userControl.update);
 app.delete('/user/:id', userControl.delete);
 app.post('/sale/:id', userControl.addSale);
@@ -85,8 +86,8 @@ app.get('/profile', function(req, res){
 
 
 mongoose.connect(
-//  "mongodb://localhost:27017/sales"
-	config.mongolab_uri
+  "mongodb://localhost:27017/sales"
+//	config.mongolab_uri
 );
 
 mongoose.connection.once('open', function(){

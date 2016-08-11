@@ -6,6 +6,7 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
 
   (function (userInfo){
+    console.log(userInfo)
     mainServ.getKnownUser(userInfo)
     .then(function(response){
       //console.log(response);
@@ -26,7 +27,7 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
 
   $scope.postSale = function(sale){
-    
+
     var addObj = {address:sale.address + "Bozeman"
     };
     console.log(addObj);
