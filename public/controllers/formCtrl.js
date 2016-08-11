@@ -26,7 +26,7 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
 
   $scope.postSale = function(sale){
-    
+
     var addObj = {address:sale.address + "Bozeman"
     };
     console.log(addObj);
@@ -38,14 +38,7 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
        mainServ.postSale(sale)
-       $scope.addButton = "Added";
-       console.log(sale);
 
-
-       // .then(function(response){
-       //  console.log(response);
-       //    //$scope.getUserID(); //updates the list!
-       //  });
     })
   }
 
