@@ -45,7 +45,9 @@ module.exports = {
       if(err){
         res.send(err);
       }
-      res.send(result);
+      req._user=result._user;
+      next()
+      //res.send(result);
     })
   }
 }

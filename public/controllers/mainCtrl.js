@@ -2,27 +2,17 @@ angular.module("garageApp").controller("mainCtrl", function($scope, $location, m
 
 //initializing variables g scope
 
-var map;
-var addPos;
-var info;
-var infoWindow;
-var markerPos;
-var marker;
-
-$scope.userName;
-$scope.landingPage = true;
-$scope.mapPage = true;
-
-$scope.labels= [];
-
-$scope.count;
-$scope.saleInfo = [];
+  var map;
+  var addPos;
+  var info;
+  var infoWindow;
+  var markerPos;
+  var marker;
 
 
-  // $scope.enterMapPage = function(){
-  //   $scope.mapPage = false;
-  //   $scope.landingPage=false;
-  // };
+
+
+  $scope.names = {};
 
 
   $scope.getUsername = function(name){
@@ -30,53 +20,55 @@ $scope.saleInfo = [];
   }
 
 
+
+
+
 // creating initmap to get the map started
 
   $scope.initMap = function(){
     map = new google.maps.Map(document.getElementById('map'),{
       center: {lat:45.6708, lng: -111.0678},
-      zoom: 11
+      zoom: 12
     });
-    $scope.getUserSales();
+    $scope.getSales();
   }
 
 //end of map function
 
 // beginning of getSales
 
-  $scope.getUserSales = function(){
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var labelIndex = 0;
-    var content;
-    var infoWindow;
-    mainServ.getAllUserSales()
-    .then(function(res){
-      console.log(res);
-      for(var i = 0; i < res.length; i++){
-        for(var j = 0; i < res[i].sale.length; j++){
-          addPos = {
-            lng: res[i].sale[j].lat,
-            lat: res[i].sale[j].lng
-          }
 
-// still looking to do circles
+$scope.getSales = function(){
+  mainServ.getAllSales()
+  .then(function(response){
+    for(var i = 0; i < response.length; i++){
 
-        marker = new google.maps.Marker({
-          position: addPos,
-          map: map,
-          animation:google.maps.Animation.DROP,
-          label: labels[labelIndex++ % labels.length]
-        });
+      $scope.names= response;
 
-        content = res[i].sale[j];
-        $scope.saleInfo.push(content);
-        // lable.push(marker.label);
+      addPos = {
+        lng: response[i].lat,
+        lat: response[i].lng
       }
-    }
-    $scope.saleInfo;
 
+      circle = new google.maps.Circle({
+        strokeColor: '#0d47a1',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '#0d47a1',
+        fillOpacity: 0.35,
+        map: map,
+        center: addPos,
+        radius: 200
+      })
+      // marker = new google.maps.Marker({
+      //   position: addPos,
+      //   map: map,
+      //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      // })
+    }
   })
 }
+
 
   $scope.updateSale = function(sale){
     mainServ.updateSale(sale);
@@ -88,7 +80,6 @@ $scope.saleInfo = [];
 //     console.log(res);
 //   })
 // }
-
 
   (function (){                   //self-invoking function that responses to whether a user is log in or not
       mainServ.getKnownUser()
@@ -110,11 +101,7 @@ $scope.saleInfo = [];
       console.log("SignOut");
       mainServ.getSignOut()
       .then(function(response){
-      $location.path('/');
       })
   }
-
-
-
 
 });

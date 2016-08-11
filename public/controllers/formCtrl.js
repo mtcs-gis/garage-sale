@@ -26,13 +26,15 @@ angular.module("garageApp").controller("formCtrl", function($scope, $location, m
 
 
   $scope.postSale = function(sale){
-    console.log(sale)
-    var addObj = {address:sale.address};
+    
+    var addObj = {address:sale.address + "Bozeman"
+    };
     console.log(addObj);
 
     geocoder.geocode(addObj, function(results, status){
        var temp = results[0].geometry.viewport;
        sale._user = $scope.userId;
+
        sale.lat = temp.b.b;
        sale.lng = temp.f.f;
        mainServ.postSale(sale)
