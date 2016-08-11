@@ -127,22 +127,24 @@ module.exports = {
 			}
 		)
 	},
-	updateSale: function(req, res){
-		console.log(req.body);
-		UserModel.findByIdAndUpdate(
-			req.params.id,
-			{$set: {"sale":req.body}},
-			{safe: true, upsert: true},
-			function(err, model){
-				console.log(err);
-				res.send(model);
-			}
-		)
+	deleteSal: function(req, res){
+		console.log()
+		UserModel.findOne({_id:req._user}, function(err, user){
+			var index = user.sale.indexOf(req.body._id);
+			user.sale.splice(index,1);
+			user.save(function(err){
+				if(err){
+					console.log(err)
+				} else {
+					res.send(req.body);
+				}
+			})
+		})
 	},
 	deleteSale: function(req, res){
 		console.log(req.body);
-		UserModel.findByIdAndRemove(
-			req.params.id,
+		UserModel.findByIdAndUpdate(
+			req.body._user,
 			{$set: {"sale":req.body}},
 			{safe: true, upsert: true},
 			function(err, model){
